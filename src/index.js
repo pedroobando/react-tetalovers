@@ -1,14 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { render } from 'react-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import App from './app/layout/App';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from './app/store/configureStore';
+import ScrollToTop from './app/layout/ScrollToTop';
+
+import 'semantic-ui-css/semantic.min.css';
+import 'react-toastify/dist/ReactToastify.min.css';
+import 'react-calendar/dist/Calendar.css';
+
+// import './app/layout/styles.css';
+
+const rootElement = document.getElementById('root');
+const store = configureStore();
+
+render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <ScrollToTop />
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  rootElement
 );
 
 // If you want to start measuring performance in your app, pass a function
