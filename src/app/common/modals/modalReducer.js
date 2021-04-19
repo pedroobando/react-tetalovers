@@ -20,6 +20,7 @@ const modalReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case OPEN_MODAL: {
       const { modalType, modalProps } = payload;
+
       return { modalType, modalProps };
     }
 
