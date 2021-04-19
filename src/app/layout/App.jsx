@@ -6,6 +6,8 @@ import { Container } from 'semantic-ui-react';
 import ModalManager from '../common/modals/ModalManager';
 import MenuBar from '../../features/nav/MenuBar';
 import StartPage from '../../features/start/StartPage';
+import Sandbox from '../../features/sandox/Sandbox';
+import ErrorComponent from '../common/error/ErrorComponent';
 
 const App = () => {
   const { key } = useLocation();
@@ -19,7 +21,13 @@ const App = () => {
         render={() => (
           <>
             <MenuBar />
-            <Container className="main"></Container>
+            <Container className="main">
+              {/* <Route exact path="/events" component={EventDashboard} /> */}
+              <Route exact path="/sandbox" component={Sandbox} />
+              {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
+              {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
+              <Route path="/error" component={ErrorComponent} />
+            </Container>
           </>
         )}
       />
