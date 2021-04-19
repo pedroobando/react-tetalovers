@@ -1,0 +1,45 @@
+@import './base/settings';
+@import './base/base';
+@import './base/mixins';
+
+// .colorPrimary {
+//   color: $dark-violet !important;
+// }
+
+// .buttonPrimary {
+//   @include button;
+//   color: $colorPrimary !important;
+// }
+
+body {
+  background-color: $colorBackground !important;
+}
+
+.ui.fixed.menu {
+  @include colorGradient;
+}
+
+.ui.container.main {
+  margin-top: 7em;
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  @include colorGradient-Violet;
+  height: 100vh;
+}
+
+.masthead h1.ui.header {
+  font-size: 4em;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-calendar {
+  width: 100% !important;
+  border: none !important;
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15) !important;
+}

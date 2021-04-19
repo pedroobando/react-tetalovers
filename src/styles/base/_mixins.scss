@@ -1,0 +1,26 @@
+@import './settings';
+
+@mixin button {
+  display: inline !important;
+  text-decoration: none !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+@mixin colorGradient {
+  background-image: linear-gradient(
+    135deg,
+    $colorPrimary 0%,
+    $colorSecondary 69%,
+    $colorTercery 89%
+  ) !important;
+}
+
+@mixin colorGradient-Violet {
+  background-image: linear-gradient(
+    135deg,
+    $colorViolet-10 18%,
+    $colorViolet-08 68%,
+    $colorViolet-05 88%
+  ) !important;
+}
