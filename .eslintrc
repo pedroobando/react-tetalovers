@@ -4,24 +4,25 @@
     "jest": true,
     "es6": true
   },
-  "globals": {
-    "React": true,
-    "jsdom": true,
-    "JSX": "readonly"
-  },
+  // "globals": {
+  //   "React": true,
+  //   "jsdom": true,
+  //   "JSX": "readonly"
+  // },
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true,
+      "jsx": true
     },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks"],
+  "plugins": ["babel", "react", "react-hooks"],
   "extends": [
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended"
   ],
+  "parser": "babel-eslint",
   "rules": {
     "no-console": "warn",
     // Best Practices
