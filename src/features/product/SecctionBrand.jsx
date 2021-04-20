@@ -3,37 +3,45 @@ import { Container } from 'semantic-ui-react';
 const lstBrand = [
   {
     bandId: '01',
-    name: 'Citricos',
-    commentary: 'Pina, Naranja, Limon, Mora, etc.',
-    imagenURL: 'assets/category-citricos.jpg',
+    name: 'cafe',
+    imagenURL: 'assets/brand-cafe.png',
   },
   {
     bandId: '02',
-    name: 'Galletas',
-    commentary: 'Cocosette, Oreo, Pie de Limon, etc.',
-    imagenURL: 'assets/category-galletas.jpg',
+    name: 'kelloggs',
+    imagenURL: 'assets/brand-kelloggs.png',
   },
   {
     bandId: '03',
-    name: 'Tropicales',
-    commentary: 'Mango, Guanabana, Lechoza, etc.',
-    imagenURL: 'assets/category-tropicales.jpg',
+    name: 'Coca-Cola',
+    imagenURL: 'assets/brand-coca-cola.png',
   },
   {
     bandId: '04',
-    name: 'Cremosos',
-    commentary: 'Mango, Guanabana, Lechoza, etc.',
-    imagenURL: 'assets/category-cremoso.jpg',
+    name: 'Maria Goya',
+    imagenURL: 'assets/brand-maria.png',
   },
   {
     bandId: '05',
-    name: '+ 18 anos',
-    commentary: 'Mojito, Ron con pasas, Ponche crema, Tiramisu',
-    imagenURL: 'assets/category-mas18.jpg',
+    name: 'Nestle',
+    imagenURL: 'assets/brand-nestle.png',
+  },
+  {
+    bandId: '06',
+    name: 'Galleta Oreo',
+    imagenURL: 'assets/brand-oreo.png',
   },
 ];
-const SecctionCategoryBrand = () => {
-  return <Container className="mt-5"></Container>;
+const SecctionBrand = () => {
+  return (
+    <Container className="mt-5 brands">
+      {lstBrand.map((brand, ind) => (
+        <div className="brandItem" key={ind}>
+          <img src={brand.imagenURL} alt={brand.name} />
+        </div>
+      ))}
+    </Container>
+  );
 };
 
-export default SecctionCategoryBrand;
+export default SecctionBrand;
