@@ -8,7 +8,7 @@ import MenuBar from '../../features/nav/MenuBar';
 import StartPage from '../../features/start/StartPage';
 import Sandbox from '../../features/sandox/Sandbox';
 import ErrorComponent from '../common/error/ErrorComponent';
-import CatalogoPage from '../../features/catalogo/CatalogoPage';
+import ProductPage from '../../features/product/ProductPage';
 
 const App = () => {
   // const { key } = useLocation();
@@ -22,7 +22,7 @@ const App = () => {
         render={() => (
           <>
             <MenuBar />
-            <Route exact path="/catalogo" component={CatalogoPage} />
+            <Route exact path="/catalogo" component={ProductPage} />
             <Container className="main">
               <Route exact path="/sandbox" component={Sandbox} />
               {/* <Route path="/events/:id" component={EventDetailedPage} /> */}

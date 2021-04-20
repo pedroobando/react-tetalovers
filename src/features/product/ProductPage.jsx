@@ -1,13 +1,13 @@
 import React from 'react';
-import CatalogoHeader from './CatalogoHeader';
+import SecctionHeader from './SecctionHeader';
 
-const CatalogoPage = () => {
+const ProductPage = () => {
   return (
     <div style={{ marginTop: 69 }}>
-      <CatalogoHeader />
+      <SecctionHeader />
       <h1>Catalogo de Productos</h1>
     </div>
   );
 };
 
-export default CatalogoPage;
+export default ProductPage;

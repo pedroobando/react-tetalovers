@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const CatalogoHeader = () => {
+const SecctionHeader = () => {
   const settings = {
     dots: true,
     autoplay: true,
@@ -29,4 +29,4 @@ const CatalogoHeader = () => {
   );
 };
 
-export default CatalogoHeader;
+export default SecctionHeader;
