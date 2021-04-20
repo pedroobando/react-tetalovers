@@ -13,9 +13,9 @@ const MenuBar = () => {
       <Container>
         <Menu.Item exact as={NavLink} to="/" header>
           <img src="/assets/logo.png" alt="logo" style={{ marginRight: '15px' }} />
-          Re-Vents
+          Tetas Lovers
         </Menu.Item>
-        <Menu.Item as={NavLink} to="/events" name="Events" />
+        <Menu.Item as={NavLink} to="/catalogo" name="Catalogo" />
         <Menu.Item as={NavLink} to="/sandbox" name="Sandbox" />
         {authenticated && (
           <Menu.Item as={NavLink} to="/createEvent">

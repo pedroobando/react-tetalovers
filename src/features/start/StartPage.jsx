@@ -9,12 +9,15 @@ const StartPage = ({ history }) => {
           <Image
             size="massive"
             src="/assets/logo.png"
-            style={{ marginBotton: 12, width: 200, marginRight: 50 }}
+            style={{ marginBotton: 12, width: 100, marginRight: 20 }}
           />
-          Teta Lovers
+          <Header.Content>
+            Tetas Lovers
+            <Header.Subheader>Hechas con amor.</Header.Subheader>
+          </Header.Content>
         </Header>
-        <Button size="huge" inverted onClick={() => history.push('/events')}>
-          Vamos por una <Icon name="right arrow" inverted />
+        <Button size="huge" inverted onClick={() => history.push('/catalogo')}>
+          Vamos por una <Icon name="right arrow" />
         </Button>
       </Container>
     </Segment>

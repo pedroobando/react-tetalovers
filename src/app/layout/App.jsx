@@ -10,7 +10,7 @@ import Sandbox from '../../features/sandox/Sandbox';
 import ErrorComponent from '../common/error/ErrorComponent';
 
 const App = () => {
-  const { key } = useLocation();
+  // const { key } = useLocation();
   return (
     <>
       <ModalManager />
@@ -22,7 +22,7 @@ const App = () => {
           <>
             <MenuBar />
             <Container className="main">
-              {/* <Route exact path="/events" component={EventDashboard} /> */}
+              {/* <Route exact path="/catalogo" component={EventDashboard} /> */}
               <Route exact path="/sandbox" component={Sandbox} />
               {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
               {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}

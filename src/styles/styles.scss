@@ -32,6 +32,12 @@ body {
 
 .masthead h1.ui.header {
   font-size: 4em;
+  color: violet;
+  .sub.header {
+    font-size: 0.4em;
+    color: violet;
+    font-weight: bold;
+  }
 }
 
 .react-datepicker-wrapper {
