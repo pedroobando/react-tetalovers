@@ -33,3 +33,15 @@
   font-size: 7px !important;
   color: rgb(255, 255, 255) !important;
 }
+
+.ui.cards {
+  display: flex !important;
+  margin: -0.875em -0.5em !important;
+  flex-wrap: wrap !important;
+  justify-content: space-evenly !important;
+}
+
+.ui.cards > .card {
+  font-size: 1em;
+  width: 20%;
+}
