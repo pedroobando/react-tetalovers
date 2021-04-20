@@ -1,7 +1,6 @@
-@import './base/settings';
 @import './base/base';
 @import './base/mixins';
-
+@import './base/ciclos';
 @import './catalogospage';
 
 // .colorPrimary {
@@ -12,6 +11,10 @@
 //   @include button;
 //   color: $colorPrimary !important;
 // }
+
+.buttonPrimary {
+  @include buttonPrimary(400px);
+}
 
 body {
   background-color: $colorBackground !important;

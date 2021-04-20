@@ -1,16 +1,33 @@
-.mt-1 {
-  margin-top: 5px !important;
-}
-.mt-5 {
-  margin-top: 20px !important;
-}
-.mb-1 {
-  margin-bottom: 5px !important;
-}
-.mb-5 {
-  margin-bottom: 20px !important;
-}
+// Colors
+$dark-violet: #eca3f5;
+$light-violet: #fdbaf8;
+$light-acuad: #b0efeb;
+$light-yellow: #edffa9;
 
-.pointer {
-  cursor: pointer !important;
-}
+$colorPrimary: #ff2fad;
+$colorSecondary: #adff2f;
+$colorTercery: #2fadff;
+
+$colorBackground: #eaeaea;
+
+$colorViolet-10: #822659;
+$colorViolet-08: #b34180;
+$colorViolet-05: #e36bae;
+$colorViolet-03: #f8a1d1;
+
+$map: (
+  primary: red,
+  sencondary: green,
+  tertiary: blue,
+);
+
+// Variables
+
+$pixelcount: 5px;
+$breakpoints: (
+  s: 0px,
+  m: 640px,
+  l: 1024px,
+  xl: 1200px,
+  xxl: 1440px,
+);

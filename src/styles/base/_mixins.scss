@@ -1,5 +1,4 @@
-@import './settings';
-
+@import './_base.scss';
 @mixin button {
   display: inline !important;
   text-decoration: none !important;
@@ -23,4 +22,18 @@
     $colorViolet-08 68%,
     $colorViolet-05 88%
   ) !important;
+}
+
+@mixin buttonPrimary($breakpoint) {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5em 1em;
+
+  &:hover {
+    background-color: coral;
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    background-color: green;
+  }
 }

@@ -1,0 +1,25 @@
+@import './base';
+
+@for $i from 1 through 20 {
+  .cols-#{$i * 5} {
+    width: $i * 5%;
+  }
+}
+
+@for $i from 1 through 10 {
+  .mt-#{$i} {
+    margin-top: $i * $pixelcount !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: $i * $pixelcount !important;
+  }
+  .ml-#{$i} {
+    margin-left: $i * $pixelcount !important;
+  }
+  .mr-#{$i} {
+    margin-right: $i * $pixelcount !important;
+  }
+}
+
+@for $i from 1 through 10 {
+}
