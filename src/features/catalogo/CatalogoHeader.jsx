@@ -17,7 +17,7 @@ const CatalogoHeader = () => {
   };
   return (
     <>
-      <Slider {...settings} style={{ width: '120%', left: '-10%' }}>
+      <Slider {...settings} style={{ width: '125%', left: '-12%' }}>
         <div>
           <Image src="assets/home-sliderdesktop.webp" />
         </div>
