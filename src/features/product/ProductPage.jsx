@@ -6,7 +6,7 @@ import SecctionFooter from './SecctionFooter';
 
 const ProductPage = () => {
   return (
-    <div style={{ marginTop: 69 }}>
+    <div className="mt-10">
       <SecctionHeader />
       <SecctionCategory />
       <SecctionBrand />

@@ -34,7 +34,7 @@ const lstBrand = [
 ];
 const SecctionBrand = () => {
   return (
-    <Container className="mt-5 mb-5 brands">
+    <Container className="my-5 brands">
       {lstBrand.map((brand, ind) => (
         <div className="brandItem" key={ind}>
           <img src={brand.imagenURL} alt={brand.name} />
