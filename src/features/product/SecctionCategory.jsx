@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Container } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import SecctionCategoryItem from './SecctionCategoryItem';
 
 const lstCategory = [
@@ -38,11 +38,13 @@ const lstCategory = [
 const SecctionCategory = () => {
   return (
     <Container className="my-5">
-      <Card.Group>
+      <Grid>
+        {/* <Card.Group> */}
         {lstCategory.map((cat, ind) => (
           <SecctionCategoryItem category={cat} key={ind} />
         ))}
-      </Card.Group>
+      </Grid>
+      {/* </Card.Group> */}
     </Container>
   );
 };
