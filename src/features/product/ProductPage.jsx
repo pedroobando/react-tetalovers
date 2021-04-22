@@ -2,6 +2,7 @@ import React from 'react';
 import SecctionCategory from './SecctionCategory';
 import SecctionHeader from './SecctionHeader';
 import SecctionBrand from './SecctionBrand';
+import SecctionProduct from './SecctionProduct';
 import SecctionFooter from './SecctionFooter';
 
 const ProductPage = () => {
@@ -10,6 +11,7 @@ const ProductPage = () => {
       <SecctionHeader />
       <SecctionCategory />
       <SecctionBrand />
+      <SecctionProduct />
       <SecctionFooter />
     </div>
   );

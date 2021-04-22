@@ -6,7 +6,7 @@
   }
 }
 
-@for $i from 1 through 10 {
+@for $i from 1 through 20 {
   .mt-#{$i} {
     margin-top: $i * $pixelcount !important;
   }

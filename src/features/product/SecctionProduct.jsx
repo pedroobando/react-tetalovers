@@ -5,46 +5,73 @@ import SecctionProductItem from './SecctionProductItem';
 const lstProduct = [
   {
     productId: '01',
-    name: 'Citricos',
-    category: {},
-    commentary: 'Pina, Naranja, Limon, Mora, etc.',
+    name: 'Mango',
+    categoryId: '01',
+    description: 'Pina, Naranja, Limon, Mora, etc.',
     imagenURL: 'assets/category-citricos.jpg',
     dateCreation: new Date('2001-03-20'),
+    price: 22.9,
+    promotion: true,
+    newproduct: false,
     active: true,
   },
   {
     productId: '02',
-    name: 'Galletas',
-    commentary: 'Cocosette, Oreo, Pie de Limon, etc.',
-    imagenURL: 'assets/category-galletas.jpg',
+    name: 'Pi~na',
+    categoryId: '01',
+    description: 'Pi~na el sabor preferido',
+    imagenURL: 'assets/category-citricos.jpg',
+    dateCreation: new Date('2001-03-20'),
+    price: 1.9,
+    promotion: false,
+    newproduct: false,
+    active: true,
   },
   {
     productId: '03',
-    name: 'Tropicales',
-    commentary: 'Mango, Guanabana, Lechoza, etc.',
-    imagenURL: 'assets/category-tropicales.jpg',
+    name: 'Ron con pasas',
+    categoryId: '05',
+    description: 'Pi~na el sabor preferido',
+    imagenURL: 'assets/category-citricos.jpg',
+    dateCreation: new Date('2001-03-20'),
+    price: 1.9,
+    promotion: true,
+    newproduct: false,
+    active: true,
   },
   {
     productId: '04',
-    name: 'Cremosos',
-    commentary: 'Mango, Guanabana, Lechoza, etc.',
-    imagenURL: 'assets/category-cremoso.jpg',
+    name: 'Arroz con leche',
+    categoryId: '02',
+    description: 'Pi~na el sabor preferido',
+    imagenURL: 'assets/category-citricos.jpg',
+    dateCreation: new Date('2001-03-20'),
+    price: 1.9,
+    promotion: false,
+    newproduct: false,
+    active: true,
   },
   {
     productId: '05',
-    name: '+ 18 anos',
-    commentary: 'Mojito, Ron con pasas, Ponche crema, Tiramisu',
-    imagenURL: 'assets/category-mas18.jpg',
+    name: 'Galleta Maria',
+    categoryId: '02',
+    description: 'Galleta maria',
+    imagenURL: 'assets/category-citricos.jpg',
+    dateCreation: new Date('2001-03-20'),
+    price: 1.9,
+    promotion: true,
+    newproduct: false,
+    active: true,
   },
 ];
 
 const SecctionProduct = () => {
   return (
-    <Container className="my-5">
+    <Container className="my-20">
       <Grid>
-        {lstProduct.map((cat, ind) => (
-          <SecctionProductItem category={cat} key={ind} />
-        ))}
+        {lstProduct.map(
+          (prod, ind) => prod.promotion && <SecctionProductItem product={prod} key={ind} />
+        )}
       </Grid>
     </Container>
   );

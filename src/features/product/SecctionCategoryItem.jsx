@@ -3,7 +3,7 @@ import { Grid, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const SecctionCategoryItem = ({ category }) => {
-  const { categoryId, name, commentary, imagenURL } = category;
+  const { categoryId, name, imagenURL } = category;
 
   return (
     <Grid.Column mobile={8} tablet={5} computer={3}>

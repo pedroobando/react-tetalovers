@@ -16,16 +16,14 @@ const SecctionHeader = () => {
     cssEase: 'linear',
   };
   return (
-    <>
-      <Slider {...settings} style={{ width: '125%', left: '-12%' }}>
-        <div>
-          <Image src="assets/home-sliderdesktop.webp" />
-        </div>
-        <div>
-          <Image src="assets/home-sliderdesktop1.webp" />
-        </div>
-      </Slider>
-    </>
+    <Slider {...settings} style={{ width: '125%', left: '-12%' }}>
+      <div>
+        <Image src="assets/home-sliderdesktop.webp" />
+      </div>
+      <div>
+        <Image src="assets/home-sliderdesktop1.webp" />
+      </div>
+    </Slider>
   );
 };
 
