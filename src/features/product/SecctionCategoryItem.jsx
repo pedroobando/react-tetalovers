@@ -7,8 +7,8 @@ const SecctionCategoryItem = ({ category }) => {
 
   return (
     <Grid.Column mobile={8} tablet={5} computer={3}>
-      <Link to={`/products?category=${categoryId}`}>
-        <Image src={imagenURL} circular size="medium" />
+      <Link to={`/teta?category=${categoryId}`}>
+        <Image src={imagenURL} circular size="medium" alt={name} />
       </Link>
     </Grid.Column>
   );

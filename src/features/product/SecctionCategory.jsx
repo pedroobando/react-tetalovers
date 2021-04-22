@@ -39,12 +39,10 @@ const SecctionCategory = () => {
   return (
     <Container className="my-5">
       <Grid>
-        {/* <Card.Group> */}
         {lstCategory.map((cat, ind) => (
           <SecctionCategoryItem category={cat} key={ind} />
         ))}
       </Grid>
-      {/* </Card.Group> */}
     </Container>
   );
 };
