@@ -34,13 +34,13 @@ const lstBrand = [
 ];
 const SecctionBrand = () => {
   return (
-    <Container className="my-20 brands">
+    <section className="my-20 brands">
       {lstBrand.map((brand, ind) => (
         <div className="brandItem" key={ind}>
           <img src={brand.imagenURL} alt={brand.name} />
         </div>
       ))}
-    </Container>
+    </section>
   );
 };
 

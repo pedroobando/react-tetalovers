@@ -4,6 +4,7 @@ import { Grid, Header, Icon, Input, List } from 'semantic-ui-react';
 const SecctionFooter = () => {
   return (
     <Grid
+      as="section"
       stackable
       columns={3}
       className="mt-5 py-5 px-5"

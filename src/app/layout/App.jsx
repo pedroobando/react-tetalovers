@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { Container } from 'semantic-ui-react';
 
 import ModalManager from '../common/modals/ModalManager';
 import MenuBar from '../../features/nav/MenuBar';
@@ -11,7 +10,7 @@ import ErrorComponent from '../common/error/ErrorComponent';
 import ProductPage from '../../features/product/ProductPage';
 
 const App = () => {
-  // const { key } = useLocation();
+  const { key } = useLocation();
   return (
     <>
       <ModalManager />
@@ -22,13 +21,11 @@ const App = () => {
         render={() => (
           <>
             <MenuBar />
-            <Route exact path="/catalogo" component={ProductPage} />
-            <Container className="main">
-              <Route exact path="/sandbox" component={Sandbox} />
-              {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
-              {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
-              <Route path="/error" component={ErrorComponent} />
-            </Container>
+            <Route exact path="/product" component={ProductPage} />
+            <Route exact path="/sandbox" component={Sandbox} />
+            {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
+            {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
+            <Route path="/error" component={ErrorComponent} />
           </>
         )}
       />

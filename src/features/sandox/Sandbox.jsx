@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Container, Segment } from 'semantic-ui-react';
 import { openModal } from '../../app/common/modals/modalReducer';
 import { TestMap } from './TestMap';
 import { decrement, increment } from './testRedux';
@@ -41,7 +41,7 @@ const Sandbox = () => {
   };
 
   return (
-    <>
+    <Container>
       <h1>Testing 123</h1>
       <h2>The data is: {data}</h2>
       <Button
@@ -85,7 +85,7 @@ const Sandbox = () => {
       <Segment style={{ width: '100%', height: '500px', marginTop: '20px' }}>
         <TestMap locations={mapLocation} setLatLng={setMapLocation} />
       </Segment>
-    </>
+    </Container>
   );
 };
 

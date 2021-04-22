@@ -37,13 +37,11 @@ const lstCategory = [
 
 const SecctionCategory = () => {
   return (
-    <Container className="my-20">
-      <Grid>
-        {lstCategory.map((cat, ind) => (
-          <SecctionCategoryItem category={cat} key={ind} />
-        ))}
-      </Grid>
-    </Container>
+    <Grid as="section" className="my-20">
+      {lstCategory.map((cat, ind) => (
+        <SecctionCategoryItem category={cat} key={ind} />
+      ))}
+    </Grid>
   );
 };
 

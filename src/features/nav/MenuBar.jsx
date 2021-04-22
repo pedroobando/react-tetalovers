@@ -15,7 +15,7 @@ const MenuBar = () => {
           <img src="/assets/logo.png" alt="logo" style={{ marginRight: '15px' }} />
           Tetas Lovers
         </Menu.Item>
-        <Menu.Item as={NavLink} to="/catalogo" name="Tetas" />
+        <Menu.Item as={NavLink} to="/product" name="Tetas" />
         <Menu.Item as={NavLink} to="/sandbox" name="Sandbox" />
         {authenticated && (
           <Menu.Item as={NavLink} to="/createEvent">

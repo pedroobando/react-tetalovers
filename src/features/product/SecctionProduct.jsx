@@ -67,13 +67,11 @@ const lstProduct = [
 
 const SecctionProduct = () => {
   return (
-    <Container className="my-20">
-      <Grid>
-        {lstProduct.map(
-          (prod, ind) => prod.promotion && <SecctionProductItem product={prod} key={ind} />
-        )}
-      </Grid>
-    </Container>
+    <Grid as="section" ui={false} className="my-20">
+      {lstProduct.map(
+        (prod, ind) => prod.promotion && <SecctionProductItem product={prod} key={ind} />
+      )}
+    </Grid>
   );
 };
 

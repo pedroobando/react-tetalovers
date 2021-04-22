@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react';
 import SecctionCategory from './SecctionCategory';
 import SecctionHeader from './SecctionHeader';
 import SecctionBrand from './SecctionBrand';
@@ -9,9 +10,11 @@ const ProductPage = () => {
   return (
     <div className="mt-10">
       <SecctionHeader />
-      <SecctionCategory />
-      <SecctionBrand />
-      <SecctionProduct />
+      <Container>
+        <SecctionCategory />
+        <SecctionBrand />
+        <SecctionProduct />
+      </Container>
       <SecctionFooter />
     </div>
   );
