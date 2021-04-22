@@ -16,7 +16,7 @@ const SecctionHeader = () => {
     cssEase: 'linear',
   };
   return (
-    <Slider {...settings} style={{ width: '100%' }}>
+    <Slider {...settings} style={{ width: 'auto' }}>
       <div>
         <Image src="assets/home-sliderdesktop.webp" />
       </div>

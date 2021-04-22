@@ -8,9 +8,11 @@ import SecctionFooter from './SecctionFooter';
 
 const ProductPage = () => {
   return (
-    <div className="mt-10">
-      <SecctionHeader />
-      <Container>
+    <div className="mt-13">
+      <section>
+        <SecctionHeader />
+      </section>
+      <Container as="section">
         <SecctionCategory />
         <SecctionBrand />
         <SecctionProduct />
