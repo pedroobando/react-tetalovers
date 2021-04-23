@@ -22,13 +22,19 @@ const lstPromotions = [
   {
     promotionId: '03',
     name: 'Tetas de promosiones',
-    imagenURL: 'assets/home-sliderdesktop.webp',
+    imagenURL: 'assets/home-sliderdesktop2.webp',
     linkURL: '',
   },
   {
     promotionId: '04',
     name: 'Ubicanos',
-    imagenURL: 'assets/home-sliderdesktop1.webp',
+    imagenURL: 'assets/home-sliderdesktop3.webp',
+    linkURL: '',
+  },
+  {
+    promotionId: '05',
+    name: 'Ubicanos',
+    imagenURL: 'assets/home-sliderdesktop4.webp',
     linkURL: '',
   },
 ];

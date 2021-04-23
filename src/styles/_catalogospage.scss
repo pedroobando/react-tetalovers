@@ -20,31 +20,24 @@
 $slickradius: 5%;
 
 .banner {
-  .slick-slider {
+  .slick-slider:hover {
     .slick-prev {
       left: 0px !important;
       border-top-right-radius: $slickradius !important;
       border-bottom-right-radius: $slickradius !important;
-
-      &:hover {
-        box-shadow: 3px 3px 5px rgba(122, 122, 122, 0.5);
-      }
     }
-
-    // .slick-prev:hover {
-    //   opacity: 1;
-    //   // transition: 2ms;
-    //   // background: rgba(248, 227, 227, 0.513) !important;
-    // }
 
     .slick-next {
       right: 0px !important;
       border-top-left-radius: $slickradius !important;
       border-bottom-left-radius: $slickradius !important;
+    }
 
-      &:hover {
-        box-shadow: -3px 3px 5px rgba(122, 122, 122, 0.5);
-      }
+    .slick-next:hover,
+    .slick-prev:hover {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     .slick-prev::before,
@@ -70,7 +63,7 @@ $slickradius: 5%;
       outline: none;
       background-color: $colorBackground;
       z-index: 1 !important;
-      // transition: 0.3s;
+      transition: 0.3s;
     }
   }
 }
