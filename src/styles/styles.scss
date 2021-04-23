@@ -2,30 +2,21 @@
 @import './base/mixins';
 @import './base/ciclos';
 @import './catalogospage';
+@import './menubar';
 
 // .colorPrimary {
 //   color: $dark-violet !important;
 // }
-
 // .buttonPrimary {
 //   @include button;
 //   color: $colorPrimary !important;
 // }
-
 .buttonPrimary {
   @include buttonPrimary(400px);
 }
 
 body {
   background-color: $colorBackground !important;
-}
-
-.ui.fixed.menu {
-  @include colorGradient;
-}
-
-.ui.container.main {
-  margin-top: 7em;
 }
 
 .masthead {

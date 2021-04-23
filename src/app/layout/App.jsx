@@ -21,11 +21,13 @@ const App = () => {
         render={() => (
           <>
             <MenuBar />
-            <Route exact path="/product" component={ProductPage} />
-            <Route exact path="/sandbox" component={Sandbox} />
-            {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
-            {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
-            <Route path="/error" component={ErrorComponent} />
+            <section className="mt-10">
+              <Route exact path="/product" component={ProductPage} />
+              <Route exact path="/sandbox" component={Sandbox} />
+              {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
+              {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
+              <Route path="/error" component={ErrorComponent} />
+            </section>
           </>
         )}
       />

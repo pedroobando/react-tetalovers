@@ -1,50 +1,77 @@
-.slick-dots {
-  // position: absolute;
-  bottom: 12px !important;
-  // display: block;
-  // width: 100%;
-  // padding: 0;
-  // margin: 0;
-  // list-style: none;
-  // text-align: center;
-  // color: white !important;
-  // font-size: 2em !important;
-}
-
-// .slick-dots li {
-//   position: relative;
-//   display: inline-block;
-//   width: 20px;
-//   height: 20px;
-//   margin: 0 5px;
-//   padding: 0;
-//   cursor: pointer;
-//   color: rgb(238, 255, 0) !important;
+// .ui.cards {
+//   display: flex !important;
+//   margin: -0.875em -0.5em !important;
+//   flex-wrap: wrap !important;
+//   justify-content: space-evenly !important;
 // }
 
-.slick-dots li.slick-active button::before {
-  font-size: 10px !important;
-  opacity: 0.95;
-  color: rgb(255, 255, 255) !important;
-}
+// .ui.cards {
+//   .card {
+//     font-size: 1em;
+//     width: 20%;
+//   }
+// }
 
-.slick-dots li button::before {
-  opacity: 0.5 !important;
-  font-size: 7px !important;
-  color: rgb(255, 255, 255) !important;
-}
+// .banner {
+//   .slick-slides .slick-prev,
+//   .slick-slides .slick-next {
+//   }
+// }
+$slickradius: 5%;
 
-.ui.cards {
-  display: flex !important;
-  margin: -0.875em -0.5em !important;
-  flex-wrap: wrap !important;
-  justify-content: space-evenly !important;
-}
+.banner {
+  .slick-slider {
+    .slick-prev {
+      left: 0px !important;
+      border-top-right-radius: $slickradius !important;
+      border-bottom-right-radius: $slickradius !important;
 
-.ui.cards {
-  .card {
-    font-size: 1em;
-    width: 20%;
+      &:hover {
+        box-shadow: 3px 3px 5px rgba(122, 122, 122, 0.5);
+      }
+    }
+
+    // .slick-prev:hover {
+    //   opacity: 1;
+    //   // transition: 2ms;
+    //   // background: rgba(248, 227, 227, 0.513) !important;
+    // }
+
+    .slick-next {
+      right: 0px !important;
+      border-top-left-radius: $slickradius !important;
+      border-bottom-left-radius: $slickradius !important;
+
+      &:hover {
+        box-shadow: -3px 3px 5px rgba(122, 122, 122, 0.5);
+      }
+    }
+
+    .slick-prev::before,
+    .slick-next::before {
+      // opacity: 1 !important;
+      color: $colorPrimary !important;
+    }
+
+    .slick-prev,
+    .slick-next {
+      font-size: 0;
+      line-height: 0;
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: 40px;
+      height: 100px;
+      padding: 0;
+      // transform: translate(0, -50%);
+      cursor: pointer;
+      color: transparent;
+      border: none;
+      outline: none;
+      background-color: $colorBackground;
+      z-index: 1 !important;
+      // transition: 0.3s;
+    }
   }
 }
 

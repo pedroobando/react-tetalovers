@@ -9,10 +9,14 @@ const MenuBar = () => {
   const { authenticated } = useSelector((state) => state.auth);
 
   return (
-    <Menu inverted fixed="top">
+    <Menu as="nav" inverted fixed="top">
       <Container>
         <Menu.Item exact as={NavLink} to="/" header>
-          <img src="/assets/logo.png" alt="logo" style={{ marginRight: '15px' }} />
+          <img
+            src="/assets/logo.png"
+            alt="logo"
+            style={{ marginRight: '15px', height: '2.6em' }}
+          />
           Tetas Lovers
         </Menu.Item>
         <Menu.Item as={NavLink} to="/product" name="Tetas" />

@@ -4,16 +4,17 @@ $light-violet: #fdbaf8;
 $light-acuad: #b0efeb;
 $light-yellow: #edffa9;
 
-$colorPrimary: #ff2fad;
-$colorSecondary: #adff2f;
-$colorTercery: #2fadff;
-
 $colorBackground: #eaeaea;
 
 $colorViolet-10: #822659;
 $colorViolet-08: #b34180;
 $colorViolet-05: #e36bae;
 $colorViolet-03: #f8a1d1;
+
+$colorPrimary: $colorViolet-10;
+$colorSecondary: $colorViolet-05;
+$colorTercery: #2fadff;
+$colorPrimaryBase: $colorViolet-03;
 
 $map: (
   primary: red,
@@ -23,7 +24,7 @@ $map: (
 
 // Variables
 
-$pixelcount: 5px;
+$pixelcount: 5.4px;
 $breakpoints: (
   s: 0px,
   m: 640px,
