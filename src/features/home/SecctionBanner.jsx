@@ -1,5 +1,7 @@
 import React from 'react';
-import { Icon, Image } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
+
+import { Button, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 
@@ -11,7 +13,7 @@ const lstPromotions = [
     promotionId: '01',
     name: 'Tetas de promosiones',
     imagenURL: 'assets/home-sliderdesktop.webp',
-    linkURL: '',
+    linkURL: '/product/teta2',
   },
   {
     promotionId: '02',
@@ -40,6 +42,7 @@ const lstPromotions = [
 ];
 
 const SecctionBanner = () => {
+  const { authenticated } = useSelector((state) => state.auth);
   const settings = {
     dots: false,
     arrows: true,
@@ -51,15 +54,22 @@ const SecctionBanner = () => {
     autoplaySpeed: 6000,
     pauseOnHover: true,
   };
+
   return (
     <section className="banner">
       <Slider {...settings}>
         {lstPromotions.map((promo, idx) => (
-          <div key={idx}>
+          <Link key={idx} to={promo.linkURL.toString().length > 1 ? promo.linkURL : '/home'}>
             <Image src={promo.imagenURL} alt={promo.name} />
-          </div>
+          </Link>
         ))}
       </Slider>
+      {authenticated && (
+        <Button basic icon labelPosition="right" id="buttonchange">
+          Change
+          <Icon name="edit outline" />
+        </Button>
+      )}
     </section>
   );
 };

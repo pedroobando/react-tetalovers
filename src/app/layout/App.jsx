@@ -7,7 +7,10 @@ import MenuBar from '../../features/nav/MenuBar';
 import StartPage from '../../features/start/StartPage';
 import Sandbox from '../../features/sandox/Sandbox';
 import ErrorComponent from '../common/error/ErrorComponent';
-import ProductPage from '../../features/product/ProductPage';
+// import ProductPage from '../../features/product/ProductPage';
+import HomePage from '../../features/home/HomePage';
+import DashPage from '../../features/dashboard/DashPage';
+import { Container } from 'semantic-ui-react';
 
 const App = () => {
   const { key } = useLocation();
@@ -22,10 +25,13 @@ const App = () => {
           <>
             <MenuBar />
             <section className="mt-10">
-              <Route exact path="/product" component={ProductPage} />
-              <Route exact path="/sandbox" component={Sandbox} />
-              {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
-              {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
+              <Route exact path="/home" component={HomePage} />
+              <Container as="section">
+                <Route exact path="/sandbox" component={Sandbox} />
+                <Route exact path="/dashboard" component={DashPage} />
+                {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
+                {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
+              </Container>
               <Route path="/error" component={ErrorComponent} />
             </section>
           </>

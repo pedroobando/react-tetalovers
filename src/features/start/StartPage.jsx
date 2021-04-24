@@ -16,7 +16,7 @@ const StartPage = ({ history }) => {
             <Header.Subheader>Hechas con amor.</Header.Subheader>
           </Header.Content>
         </Header>
-        <Button size="huge" inverted onClick={() => history.push('/product')}>
+        <Button size="huge" inverted onClick={() => history.push('/home')}>
           Vamos por una <Icon name="right arrow" />
         </Button>
       </Container>

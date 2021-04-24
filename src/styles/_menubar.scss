@@ -11,3 +11,13 @@
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px 10px;
   padding: 5px 70px;
 }
+
+.ui.text.menu {
+  .header.item {
+    color: $colorMenuText !important;
+  }
+
+  .item {
+    color: $colorMenuText !important;
+  }
+}

@@ -4,6 +4,7 @@ import { Button, Container, Menu } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import SignedOutMenu from './SignedOutMenu';
 import SignedInMenu from './SignedInMenu';
+import AdminInMenu from './AdminInMenu';
 
 const MenuBar = () => {
   const { authenticated } = useSelector((state) => state.auth);
@@ -20,13 +21,18 @@ const MenuBar = () => {
           />
           Tetas Lovers
         </Menu.Item>
-        <Menu.Item as={NavLink} to="/product" name="Tetas" />
+        <Menu.Item as={NavLink} to="/home" name="home" />
+
         <Menu.Item as={NavLink} to="/sandbox" name="Sandbox" />
         {authenticated && (
-          <Menu.Item as={NavLink} to="/createEvent">
-            <Button positive inverted content="Create Event" />
-          </Menu.Item>
+          <>
+            <Menu.Item as={NavLink} to="/dashboard" name="Tablero" />
+            <Menu.Item as={NavLink} to="/createEvent">
+              <Button positive inverted content="Create Event" />
+            </Menu.Item>
+          </>
         )}
+        {authenticated && <AdminInMenu />}
         {authenticated ? <SignedInMenu /> : <SignedOutMenu />}
       </Container>
     </Menu>

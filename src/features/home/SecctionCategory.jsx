@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Button, Grid, Icon } from 'semantic-ui-react';
 import SecctionCategoryItem from './SecctionCategoryItem';
 
 const lstCategory = [
@@ -37,7 +37,7 @@ const lstCategory = [
 
 const SecctionCategory = () => {
   return (
-    <Grid as="section" className="my-20">
+    <Grid as="section" className="my-10">
       {lstCategory.map((cat, ind) => (
         <SecctionCategoryItem category={cat} key={ind} />
       ))}

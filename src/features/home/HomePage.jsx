@@ -6,7 +6,7 @@ import SecctionBrand from './SecctionBrand';
 import SecctionProduct from './SecctionProduct';
 import SecctionFooter from './SecctionFooter';
 
-const ProductPage = () => {
+const HomePage = () => {
   return (
     <>
       <SecctionBanner />
@@ -20,4 +20,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default HomePage;
