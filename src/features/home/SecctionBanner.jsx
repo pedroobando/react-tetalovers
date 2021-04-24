@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const lstPromotions = [
+const lstBanners = [
   {
     promotionId: '01',
     name: 'Tetas de promosiones',
@@ -58,7 +58,7 @@ const SecctionBanner = () => {
   return (
     <section className="banner">
       <Slider {...settings}>
-        {lstPromotions.map((promo, idx) => (
+        {lstBanners.map((promo, idx) => (
           <Link key={idx} to={promo.linkURL.toString().length > 1 ? promo.linkURL : '/home'}>
             <Image src={promo.imagenURL} alt={promo.name} />
           </Link>

@@ -25,12 +25,9 @@ const MenuBar = () => {
 
         <Menu.Item as={NavLink} to="/sandbox" name="Sandbox" />
         {authenticated && (
-          <>
-            <Menu.Item as={NavLink} to="/dashboard" name="Tablero" />
-            <Menu.Item as={NavLink} to="/createEvent">
-              <Button positive inverted content="Create Event" />
-            </Menu.Item>
-          </>
+          <Menu.Item as={NavLink} to="/createEvent">
+            <Button positive inverted content="Create Event" />
+          </Menu.Item>
         )}
         {authenticated && <AdminInMenu />}
         {authenticated ? <SignedInMenu /> : <SignedOutMenu />}
