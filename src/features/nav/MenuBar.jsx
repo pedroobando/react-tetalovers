@@ -9,7 +9,8 @@ const MenuBar = () => {
   const { authenticated } = useSelector((state) => state.auth);
 
   return (
-    <Menu as="nav" inverted fixed="top">
+    // inverted
+    <Menu as="nav" fixed="top" text>
       <Container>
         <Menu.Item exact as={NavLink} to="/" header>
           <img

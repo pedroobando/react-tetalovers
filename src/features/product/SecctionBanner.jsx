@@ -41,18 +41,6 @@ const lstPromotions = [
 
 const SecctionBanner = () => {
   const settings = {
-    // dots: false,
-    // lazyLoad: true,
-    // infinite: true,
-    // autoplay: true,
-    // speed: 2000,
-    // autoplaySpeed: 2000,
-    // slidesToShow: 1,
-    // slidesToScroll: 1,
-    // arrows: true,
-
-    // centerPadding: '-60px',
-
     dots: false,
     arrows: true,
     infinite: true,

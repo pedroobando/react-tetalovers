@@ -1,7 +1,13 @@
-.ui.fixed.menu {
-  @include colorGradient-Violet;
+.ui.text.fixed.menu {
+  // @include colorGradient-Violet;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px 0px;
+  background-color: $colorMenuBackground;
+  // font-family: Poppins;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px 10px;
+  padding: 5px 70px;
 }
-
-// .ui.container.main {
-//   margin-top: 7em;
-// }
