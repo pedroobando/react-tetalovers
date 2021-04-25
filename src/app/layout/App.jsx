@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { Container } from 'semantic-ui-react';
 
 import ModalManager from '../common/modals/ModalManager';
 import MenuBar from '../../features/nav/MenuBar';
@@ -10,8 +9,8 @@ import Sandbox from '../../features/sandox/Sandbox';
 import ErrorComponent from '../common/error/ErrorComponent';
 // import ProductPage from '../../features/product/ProductPage';
 import HomePage from '../../features/home/HomePage';
-import BannerPage from '../../features/admin/banner/BannerPage';
-import BannerForm from '../../features/admin/banner/BannerForm';
+import BannerPage from '../../features/banner/BannerPage';
+import BannerForm from '../../features/banner/BannerForm';
 
 const App = () => {
   const { key } = useLocation();
@@ -32,7 +31,6 @@ const App = () => {
               <Route exact path="/admin/banner" component={BannerPage} />
               <Route path="/admin/banner/:id" component={BannerForm} key={key} />
               {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
-
               <Route path="/error" component={ErrorComponent} />
             </section>
           </>

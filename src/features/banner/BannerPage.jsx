@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container, Segment } from 'semantic-ui-react';
 import BannerItem from './BannerItem';
 

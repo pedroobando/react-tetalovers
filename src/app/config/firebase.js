@@ -5,12 +5,12 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA-ijZUfvXPj1DKGx5cjXnkdOSHUEg_i0s',
-  authDomain: 'reventscourse-c8e88.firebaseapp.com',
-  projectId: 'reventscourse-c8e88',
-  storageBucket: 'reventscourse-c8e88.appspot.com',
-  messagingSenderId: '215525523186',
-  appId: '1:215525523186:web:985dfed21b9251db1e9a6b',
+  apiKey: 'AIzaSyAeNomMF8h1kE2Ps7klTpngdh1gvkWu0nQ',
+  authDomain: 'tetalovers-5fe62.firebaseapp.com',
+  projectId: 'tetalovers-5fe62',
+  storageBucket: 'tetalovers-5fe62.appspot.com',
+  messagingSenderId: '317887558659',
+  appId: '1:317887558659:web:7ac7befb90b16be2abca36',
 };
 
 firebase.initializeApp(firebaseConfig);

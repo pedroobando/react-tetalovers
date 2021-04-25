@@ -1,0 +1,4 @@
+export const CREATE_BANNER = 'CREATE_BANNER';
+export const UPDATE_BANNER = 'UPDATE_BANNER';
+export const DELETE_BANNER = 'DELETE_BANNER';
+export const FETCH_BANNERS = 'FETCH_BANNERS';
