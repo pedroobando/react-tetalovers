@@ -11,6 +11,7 @@ import ErrorComponent from '../common/error/ErrorComponent';
 // import ProductPage from '../../features/product/ProductPage';
 import HomePage from '../../features/home/HomePage';
 import BannerPage from '../../features/admin/banner/BannerPage';
+import BannerForm from '../../features/admin/banner/BannerForm';
 
 const App = () => {
   const { key } = useLocation();
@@ -26,12 +27,12 @@ const App = () => {
             <MenuBar />
             <section className="mt-10">
               <Route exact path="/home" component={HomePage} />
-              <div as="section" className="mt-5">
-                <Route exact path="/sandbox" component={Sandbox} />
-                <Route exact path="/admin/banner" component={BannerPage} />
-                {/* <Route path="/events/:id" component={EventDetailedPage} /> */}
-                {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
-              </div>
+
+              <Route exact path="/sandbox" component={Sandbox} />
+              <Route exact path="/admin/banner" component={BannerPage} />
+              <Route path="/admin/banner/:id" component={BannerForm} key={key} />
+              {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
+
               <Route path="/error" component={ErrorComponent} />
             </section>
           </>

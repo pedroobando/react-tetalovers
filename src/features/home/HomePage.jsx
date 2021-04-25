@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <>
       <SecctionBanner />
-      <Container as="section">
+      <Container>
         <SecctionCategory />
         <SecctionBrand />
         <SecctionProduct />

@@ -1,20 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon, Table } from 'semantic-ui-react';
+import { Header, Icon, Table } from 'semantic-ui-react';
 
 const BannerItem = ({ banner }) => {
+  const { name, linkURL, bannerId } = banner;
   return (
-    <Table.Row>
-      <Table.Cell>
+    <Link to={`banner/${bannerId}`}>
+      <Header as="h4" color="purple">
         <Icon name="edit" />
-        <span>{banner.name}</span>
-
-        {/* <small>{cutDescription(product.description, 60)}</small> */}
-      </Table.Cell>
-      <Table.Cell textAlign="left">
-        <span>{banner.linkURL}</span>
-      </Table.Cell>
-    </Table.Row>
+        <Header.Content>
+          {name}
+          <Header.Subheader>{linkURL}</Header.Subheader>
+        </Header.Content>
+      </Header>
+    </Link>
   );
 };
 

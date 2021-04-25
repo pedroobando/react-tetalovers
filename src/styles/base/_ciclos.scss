@@ -48,6 +48,15 @@
     padding-top: $i * $pixelcount !important;
     padding-bottom: $i * $pixelcount !important;
   }
+
+  .pst-#{$i} {
+    position: 'retative' !important;
+    top: $i * $pixelcount !important;
+  }
+  .psb-#{$i} {
+    position: 'retative' !important;
+    bottom: $i * $pixelcount !important;
+  }
 }
 
 @for $i from 1 through 10 {

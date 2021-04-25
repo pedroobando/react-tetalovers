@@ -67,7 +67,7 @@ const lstProduct = [
 
 const SecctionProduct = () => {
   return (
-    <Grid as="section" ui={false} className="my-20">
+    <Grid as="section" ui={false} className="my-10">
       {lstProduct.map(
         (prod, ind) => prod.promotion && <SecctionProductItem product={prod} key={ind} />
       )}
