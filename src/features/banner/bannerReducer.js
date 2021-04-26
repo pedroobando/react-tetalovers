@@ -1,4 +1,3 @@
-//import { sampleData } from '../../app/api/sampleData';
 import { CREATE_BANNER, UPDATE_BANNER, DELETE_BANNER, FETCH_BANNERS } from './bannerConstants';
 
 const initialState = {

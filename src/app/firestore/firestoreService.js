@@ -22,17 +22,21 @@ export const dataFromSnapshot = (snapshot) => {
   };
 };
 
-export const ListenToEventsFromFirestore = () => {
-  return db.collection('events');
+// export const ListenToEventsFromFirestore = () => {
+//   return db.collection('events');
+// };
+
+export const ListenToBannersFromFirestore = () => {
+  return db.collection('banners');
 };
 
-export const ListenToEventFromFirestore = (eventId) => {
-  return db.collection('events').doc(eventId);
+export const ListenToBannerFromFirestore = (bannerId) => {
+  return db.collection('banners').doc(bannerId);
 };
 
-export const addEventToFirestore = (event) => {
-  return db.collection('events').add({
-    ...event,
+export const addBannerToFirestore = (banner) => {
+  return db.collection('banners').add({
+    ...banner,
     hostedBy: 'Diana',
     hostPhotoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
     attendees: firebase.firestore.FieldValue.arrayUnion({
@@ -43,16 +47,16 @@ export const addEventToFirestore = (event) => {
   });
 };
 
-export const updateEventInFirestore = (event) => {
-  return db.collection('events').doc(event.id).update(event);
+export const updateBannerInFirestore = (banner) => {
+  return db.collection('banners').doc(banner.id).update(banner);
 };
 
-export const deleteEventInFirestore = (eventId) => {
-  return db.collection('events').doc(eventId).delete();
+export const deleteBannerInFirestore = (bannerId) => {
+  return db.collection('banners').doc(bannerId).delete();
 };
 
-export const cancelEventToggle = (event) => {
-  return db.collection('events').doc(event.id).update({
-    isCancelled: !event.isCancelled,
+export const cancelEventToggle = (banner) => {
+  return db.collection('banners').doc(banner.id).update({
+    isCancelled: !banner.isCancelled,
   });
 };

@@ -21,9 +21,9 @@ import { toast } from 'react-toastify';
 //   };
 // };
 
-export const listenToEvents = (banners) => {
+export const listenToBanners = (banners) => {
   return {
-    type: FETCH_BANNES,
+    type: FETCH_BANNERS,
     payload: banners,
   };
 };
