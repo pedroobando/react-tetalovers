@@ -50,11 +50,11 @@
   }
 
   .pst-#{$i} {
-    position: 'retative' !important;
+    position: relative !important;
     top: $i * $pixelcount !important;
   }
   .psb-#{$i} {
-    position: 'retative' !important;
+    position: relative !important;
     bottom: $i * $pixelcount !important;
   }
 }

@@ -9,8 +9,9 @@ import Sandbox from '../../features/sandox/Sandbox';
 import ErrorComponent from '../common/error/ErrorComponent';
 // import ProductPage from '../../features/product/ProductPage';
 import HomePage from '../../features/home/HomePage';
-import BannerPage from '../../features/banner/BannerPage';
-import BannerForm from '../../features/banner/BannerForm';
+
+import BannerPage from '../../features/banner/admin/BannerPage';
+import BannerForm from '../../features/banner/admin/BannerForm';
 
 const App = () => {
   const { key } = useLocation();
