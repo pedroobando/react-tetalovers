@@ -1,48 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Button, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
-const lstBanners = [
-  {
-    promotionId: '01',
-    name: 'Tetas de promosiones',
-    imagenURL: 'assets/home-sliderdesktop.webp',
-    linkURL: '/product/teta2',
-  },
-  {
-    promotionId: '02',
-    name: 'Ubicanos',
-    imagenURL: 'assets/home-sliderdesktop1.webp',
-    linkURL: '',
-  },
-  {
-    promotionId: '03',
-    name: 'Tetas de promosiones',
-    imagenURL: 'assets/home-sliderdesktop2.webp',
-    linkURL: '',
-  },
-  {
-    promotionId: '04',
-    name: 'Ubicanos',
-    imagenURL: 'assets/home-sliderdesktop3.webp',
-    linkURL: '',
-  },
-  {
-    promotionId: '05',
-    name: 'Ubicanos',
-    imagenURL: 'assets/home-sliderdesktop4.webp',
-    linkURL: '',
-  },
-];
+import { listenToBannersFromFirestore } from '../../../app/firestore/firestoreService';
+import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
+import { listenToBanners } from '../bannerActions';
 
 const SecctionBanner = () => {
+  const dispatch = useDispatch();
+  const { banners } = useSelector((state) => state.banner);
+  const { loading } = useSelector((state) => state.async);
+
   const { authenticated } = useSelector((state) => state.auth);
+
+  useFirestoreCollection({
+    query: () => listenToBannersFromFirestore(),
+    data: (banners) => dispatch(listenToBanners(banners)),
+    deps: [dispatch],
+  });
+
   const settings = {
     dots: false,
     arrows: true,
@@ -58,7 +37,7 @@ const SecctionBanner = () => {
   return (
     <section className="banner">
       <Slider {...settings}>
-        {lstBanners.map((promo, idx) => (
+        {banners.map((promo, idx) => (
           <Link key={idx} to={promo.linkURL.toString().length > 1 ? promo.linkURL : '/home'}>
             <Image src={promo.imagenURL} alt={promo.name} />
           </Link>

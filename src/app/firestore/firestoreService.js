@@ -26,11 +26,11 @@ export const dataFromSnapshot = (snapshot) => {
 //   return db.collection('events');
 // };
 
-export const ListenToBannersFromFirestore = () => {
+export const listenToBannersFromFirestore = () => {
   return db.collection('banners');
 };
 
-export const ListenToBannerFromFirestore = (bannerId) => {
+export const listenToBannerFromFirestore = (bannerId) => {
   return db.collection('banners').doc(bannerId);
 };
 

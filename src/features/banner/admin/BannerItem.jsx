@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Header, Icon, Image, Item, Segment } from 'semantic-ui-react';
+import { Button, Header, Image, Item, Segment } from 'semantic-ui-react';
 
 const eventImageStyle = {
   filter: 'brightness(80%)',
@@ -41,11 +41,11 @@ const BannerItem = ({ banner }) => {
           Eliminar Banner
         </Button>
 
-        <Button color="blue" floated="right">
+        <Button as={Link} to={`banner/${id}`} color="blue" floated="right">
           Actualizar
         </Button>
 
-        <Button color="green" floated="right">
+        <Button as={Link} to={`/admin/createBanner/`} color="green" floated="right">
           Crear Banner
         </Button>
       </Segment>

@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Segment } from 'semantic-ui-react';
-import { ListenToBannersFromFirestore } from '../../../app/firestore/firestoreService';
+import { Container } from 'semantic-ui-react';
+import { listenToBannersFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 import { listenToBanners } from '../bannerActions';
 import BannerItem from './BannerItem';
@@ -12,7 +13,7 @@ const BannerPage = () => {
   const { loading } = useSelector((state) => state.async);
 
   useFirestoreCollection({
-    query: () => ListenToBannersFromFirestore(),
+    query: () => listenToBannersFromFirestore(),
     data: (banners) => dispatch(listenToBanners(banners)),
     deps: [dispatch],
   });

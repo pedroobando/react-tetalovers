@@ -30,7 +30,12 @@ const App = () => {
 
               <Route exact path="/sandbox" component={Sandbox} />
               <Route exact path="/admin/banner" component={BannerPage} />
-              <Route path="/admin/banner/:id" component={BannerForm} key={key} />
+              <Route
+                path={['/admin/createBanner', '/admin/banner/:id']}
+                component={BannerForm}
+                key={key}
+              />
+              {/* <Route path="/admin/banner/:id" component={BannerForm} key={key} /> */}
               {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
               <Route path="/error" component={ErrorComponent} />
             </section>
