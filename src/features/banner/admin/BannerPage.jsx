@@ -10,7 +10,7 @@ import BannerItem from './BannerItem';
 const BannerPage = () => {
   const dispatch = useDispatch();
   const { banners } = useSelector((state) => state.banner);
-  const { loading } = useSelector((state) => state.async);
+  // const { loading } = useSelector((state) => state.async);
 
   useFirestoreCollection({
     query: () => listenToBannersFromFirestore(),

@@ -60,3 +60,33 @@ export const cancelEventToggle = (banner) => {
     isCancelled: !banner.isCancelled,
   });
 };
+
+// Categories
+export const listenToCategoriesFromFirestore = () => {
+  return db.collection('categories');
+};
+
+export const listenToCategoryFromFirestore = (categoryId) => {
+  return db.collection('categories').doc(categoryId);
+};
+
+export const addCategoryToFirestore = (category) => {
+  return db.collection('categories').add({
+    ...category,
+    dateCreate: 'Diana',
+    hostPhotoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
+    attendees: firebase.firestore.FieldValue.arrayUnion({
+      id: cuid(),
+      displayName: 'Diana',
+      photoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
+    }),
+  });
+};
+
+export const updateCategoryInFirestore = (category) => {
+  return db.collection('categories').doc(category.id).update(category);
+};
+
+export const deleteCategoryInFirestore = (categoryId) => {
+  return db.collection('categories').doc(categoryId).delete();
+};

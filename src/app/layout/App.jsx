@@ -13,6 +13,8 @@ import HomePage from '../../features/home/HomePage';
 import BannerPage from '../../features/banner/admin/BannerPage';
 import BannerForm from '../../features/banner/admin/BannerForm';
 
+import CategoryPage from '../../features/category/admin/CategoryPage';
+
 const App = () => {
   const { key } = useLocation();
   return (
@@ -35,6 +37,8 @@ const App = () => {
                 component={BannerForm}
                 key={key}
               />
+
+              <Route exact path="/admin/category" component={CategoryPage} />
               {/* <Route path="/admin/banner/:id" component={BannerForm} key={key} /> */}
               {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
               <Route path="/error" component={ErrorComponent} />
