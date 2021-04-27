@@ -1,6 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Header, Image, Item, Segment } from 'semantic-ui-react';
+import { openModal } from '../../../app/common/modals/modalReducer';
+
+import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
+import BannerDelete from './BannerDelModal';
 
 const eventImageStyle = {
   filter: 'brightness(80%)',
@@ -16,7 +21,16 @@ const eventImageTextStyle = {
 };
 
 const BannerItem = ({ banner }) => {
+  const dispatch = useDispatch();
   const { name, imagenURL, linkURL, id } = banner;
+
+  const handleRemoveBanner = (bannerId) => {
+    // await deleteBannerInFirestore(bannerId);
+    console.log(bannerId);
+    // return <BannerDelete />;
+    // console.log(bannerId);
+  };
+
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: '0' }}>
@@ -37,7 +51,12 @@ const BannerItem = ({ banner }) => {
       </Segment>
 
       <Segment attached="bottom">
-        <Button color="red" basic>
+        <Button
+          onClick={() =>
+            dispatch(openModal({ modalType: 'BannerDelModal', modalProps: { banner } }))
+          }
+          color="red"
+          basic>
           Eliminar Banner
         </Button>
 

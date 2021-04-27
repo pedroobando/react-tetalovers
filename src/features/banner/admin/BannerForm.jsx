@@ -106,7 +106,7 @@ const BannerForm = ({ match, history }) => {
               <Button
                 disabled={isSubmitting}
                 as={Link}
-                to="/events"
+                to="/admin/banner"
                 type="button"
                 floated="right"
                 content="Cancel"
