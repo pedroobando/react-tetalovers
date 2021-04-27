@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Button, Divider, Header, Icon } from 'semantic-ui-react';
 import { closeModal } from '../../../app/common/modals/modalReducer';
 import ModalWrapper from '../../../app/common/modals/ModalWrapper';
+import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
 import { deleteBanner } from '../bannerActions';
 
 const BannerDelModal = ({ banner }) => {
@@ -30,8 +31,9 @@ const BannerDelModal = ({ banner }) => {
           color="green"
           floated="right"
           className="px-5"
-          onClick={() => {
-            dispatch(deleteBanner(banner.id));
+          onClick={async () => {
+            // dispatch(deleteBanner(banner.id));
+            await deleteBannerInFirestore(banner.id);
             dispatch(closeModal());
           }}>
           <Icon name="checkmark" /> Continuar
