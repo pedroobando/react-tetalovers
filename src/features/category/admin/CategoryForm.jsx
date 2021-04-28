@@ -17,20 +17,20 @@ import * as Yup from 'yup';
 
 import MyTextInput from '../../../app/common/form/MyTextInput';
 
-const CateoryForm = ({ match, history }) => {
+const CategoryForm = ({ match, history }) => {
   // global  google
   const dispatch = useDispatch();
   const [loadingCancel, setLoadingCancel] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const selectedBanner = useSelector((state) =>
-    state.banner.banners.find((ban) => ban.id == match.params.id)
+  const selectedCategory = useSelector((state) =>
+    state.category.categories.find((cat) => cat.id == match.params.id)
   );
   const { loading, error } = useSelector((state) => state.async);
 
-  const initialValues = selectedBanner ?? {
+  const initialValues = selectedCategory ?? {
     name: '',
+    commentary: '',
     imagenURL: '',
-    linkURL: '',
     date: '',
   };
 
@@ -58,7 +58,7 @@ const CateoryForm = ({ match, history }) => {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
-              selectedBanner
+              selectedCategory
                 ? await updateCategoryInFirestore(values)
                 : await addCategoryToFirestore(values);
               setSubmitting(false);
@@ -98,4 +98,4 @@ const CateoryForm = ({ match, history }) => {
   );
 };
 
-export default CateoryForm;
+export default CategoryForm;

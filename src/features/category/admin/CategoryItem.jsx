@@ -1,23 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button, Divider, Icon, Item, Segment } from 'semantic-ui-react';
 import { openModal } from '../../../app/common/modals/modalReducer';
 
 // import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
 // import BannerDelete from './BannerDelModal';
-
-const eventImageStyle = {
-  filter: 'brightness(80%)',
-};
-
-const eventImageTextStyle = {
-  position: 'absolute',
-  bottom: '5%',
-  left: '5%',
-  width: '100%',
-  height: 'auto',
-  color: 'white',
-};
 
 const CategoryItem = ({ category }) => {
   const dispatch = useDispatch();
@@ -34,12 +22,13 @@ const CategoryItem = ({ category }) => {
               <span className="cinema">{commentary}</span>
             </Item.Meta>
             <Divider />
+
             <Item.Extra>
-              <Button primary floated="right">
+              <Button as={Link} to={`category/${id}`} primary floated="right">
                 <Icon name="edit" />
                 Actualizar
               </Button>
-              <Button color="green" floated="right">
+              <Button as={Link} to={'/admin/createCategory'} color="green" floated="right">
                 <Icon name="file text" />
                 Crear Categoria
               </Button>

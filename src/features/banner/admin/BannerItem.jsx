@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import { Button, Header, Image, Item, Segment } from 'semantic-ui-react';
 import { openModal } from '../../../app/common/modals/modalReducer';
 
-// import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
-// import BannerDelete from './BannerDelModal';
-
 const eventImageStyle = {
   filter: 'brightness(80%)',
 };

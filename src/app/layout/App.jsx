@@ -14,6 +14,7 @@ import BannerPage from '../../features/banner/admin/BannerPage';
 import BannerForm from '../../features/banner/admin/BannerForm';
 
 import CategoryPage from '../../features/category/admin/CategoryPage';
+import CategoryForm from '../../features/category/admin/CategoryForm';
 
 const App = () => {
   const { key } = useLocation();
@@ -39,6 +40,11 @@ const App = () => {
               />
 
               <Route exact path="/admin/category" component={CategoryPage} />
+              <Route
+                path={['/admin/createCategory', '/admin/category/:id']}
+                component={CategoryForm}
+                key={key}
+              />
               {/* <Route path="/admin/banner/:id" component={BannerForm} key={key} /> */}
               {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
               <Route path="/error" component={ErrorComponent} />
