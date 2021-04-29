@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
   async: asyncReducer,
   banner: bannerReducer,
   category: categoryReducer,
+  datapp: bannerReducer,
 });
 
 export default rootReducer;
