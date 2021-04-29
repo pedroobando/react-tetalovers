@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Grid, Icon } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import SecctionCategoryItem from './SecctionCategoryItem';
 
 const lstCategory = [
