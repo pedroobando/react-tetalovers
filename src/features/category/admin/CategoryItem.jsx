@@ -28,10 +28,7 @@ const CategoryItem = ({ category }) => {
                 <Icon name="edit" />
                 Actualizar
               </Button>
-              <Button as={Link} to={'/admin/createCategory'} color="green" floated="right">
-                <Icon name="file text" />
-                Crear Categoria
-              </Button>
+
               <Button
                 onClick={() =>
                   dispatch(

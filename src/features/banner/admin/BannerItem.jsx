@@ -53,10 +53,6 @@ const BannerItem = ({ banner }) => {
         <Button as={Link} to={`banner/${id}`} color="blue" floated="right">
           Actualizar
         </Button>
-
-        <Button as={Link} to={`/admin/createBanner/`} color="green" floated="right">
-          Crear Banner
-        </Button>
       </Segment>
     </Segment.Group>
   );
