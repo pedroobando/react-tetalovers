@@ -7,6 +7,8 @@ import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollectio
 import { listenToProducts } from '../productActions';
 import ProductItem from './ProductItem';
 
+import './styleProductPage.scss';
+
 const ProductPage = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);

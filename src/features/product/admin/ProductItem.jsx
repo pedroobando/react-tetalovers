@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Divider, Icon, Item, Segment } from 'semantic-ui-react';
+import { Button, Card, Divider, Icon, Image, Label, Statistic } from 'semantic-ui-react';
 import { openModal } from '../../../app/common/modals/modalReducer';
 
 // import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
@@ -9,44 +9,32 @@ import { openModal } from '../../../app/common/modals/modalReducer';
 
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
-  const { name, imagenURL, commentary, id } = product;
+  const { id, categoryId, name, description, imagenURL, price } = product;
 
   return (
-    <Segment>
-      <Item.Group>
-        <Item>
-          <Item.Image src={imagenURL} />
-          <Item.Content>
-            <Item.Header as="h2">{name}</Item.Header>
-            <Item.Meta>
-              <span className="cinema">{commentary}</span>
-            </Item.Meta>
-            <Divider />
-
-            <Item.Extra>
-              <Button as={Link} to={`category/${id}`} primary floated="right">
-                <Icon name="edit" />
-                Actualizar
-              </Button>
-              <Button as={Link} to={'/admin/createCategory'} color="green" floated="right">
-                <Icon name="file text" />
-                Crear Categoria
-              </Button>
-              <Button
-                onClick={() =>
-                  dispatch(
-                    openModal({ modalType: 'CategoryDelModal', modalProps: { category } })
-                  )
-                }
-                color="red"
-                basic>
-                Eliminar
-              </Button>
-            </Item.Extra>
-          </Item.Content>
-        </Item>
-      </Item.Group>
-    </Segment>
+    <Card>
+      <Label attached="top">{categoryId}</Label>
+      <Image src={imagenURL} wrapped ui={false} />
+      <Card.Content extra>
+        <Card.Header>{name}</Card.Header>
+        <Card.Description>{description}</Card.Description>
+        <div className="right aligned content">
+          <Statistic horizontal color="pink">
+            <Statistic.Label>Precio:</Statistic.Label>
+            <Statistic.Value>{price}</Statistic.Value>
+          </Statistic>
+        </div>
+      </Card.Content>
+      <Card.Content>
+        <Button size="small" color="red" basic floated="left">
+          Eliminar
+        </Button>
+        <Button as={Link} size="small" to={`product/${id}`} primary floated="right">
+          <Icon name="edit" />
+          Actualizar
+        </Button>
+      </Card.Content>
+    </Card>
   );
 };
 

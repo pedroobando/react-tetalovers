@@ -1,0 +1,16 @@
+@import '../../../styles/styles.scss';
+
+.ui.card {
+  width: 250px !important;
+}
+
+.ui.card > :first-child,
+.ui.cards > .card > :first-child {
+  background-color: $colorPrimaryBase !important;
+  border-color: $colorPrimaryBase !important;
+}
+
+.ui.card > .image > img,
+.ui.cards > .card > .image > img {
+  height: 250px !important;
+}

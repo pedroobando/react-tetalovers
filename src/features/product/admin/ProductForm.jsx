@@ -5,12 +5,12 @@ import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Container, Header, Segment, Button } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
-import { listenToCategories } from '../productActions';
+import { listenToProducts } from '../productActions';
 import { useFirestoreDoc } from '../../../app/hooks/useFirestoreDoc';
 import {
-  listenToCategoryFromFirestore,
-  updateCategoryInFirestore,
-  addCategoryToFirestore,
+  listenToProductFromFirestore,
+  updateProductInFirestore,
+  addProductToFirestore,
 } from '../../../app/firestore/firestoreService';
 
 import * as Yup from 'yup';
@@ -20,32 +20,39 @@ import MyTextInput from '../../../app/common/form/MyTextInput';
 const ProductForm = ({ match, history }) => {
   // global  google
   const dispatch = useDispatch();
-  const selectedCategory = useSelector((state) =>
-    state.category.categories.find((cat) => cat.id == match.params.id)
+  const selectedProduct = useSelector((state) =>
+    state.product.products.find((prd) => prd.id == match.params.id)
   );
   const { loading, error } = useSelector((state) => state.async);
 
-  const initialValues = selectedCategory ?? {
-    name: '',
-    commentary: '',
+  const initialValues = selectedProduct ?? {
+    categoryId: '',
+    description: '',
     imagenURL: '',
-    date: '',
+    name: '',
+    isActive: true,
+    isNew: true,
+    isPromotion: true,
+    price: 0,
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required('El nombre de la categoria requerido'),
-    commentary: Yup.string().required('El comentario de la categoria requerido'),
-    imagenURL: Yup.string().required('La ruta de la imagen es requerida'),
+    categoryId: Yup.string().required('La cetegoria a la cual pertenece el producto'),
+    name: Yup.string().required('El nombre de producto es requerido'),
+    description: Yup.string().required(
+      'Una breve descripcion del producto, ayudara a conocer un poca mas es este.'
+    ),
+    price: Yup.number().min(-1, 'El precio del producto no debe ser menor a cero'),
   });
 
   useFirestoreDoc({
     shouldExecute: !!match.params.id,
-    query: () => listenToCategoryFromFirestore(match.params.id),
-    data: (category) => dispatch(listenToCategories([category])),
+    query: () => listenToProductFromFirestore(match.params.id),
+    data: (product) => dispatch(listenToProducts([product])),
     deps: [match.params.id, dispatch],
   });
 
-  if (loading) return <LoadingComponent content="Loading category.." />;
+  if (loading) return <LoadingComponent content="Loading productos.." />;
   if (error) return <Redirect to="/error" />;
 
   return (
@@ -56,11 +63,11 @@ const ProductForm = ({ match, history }) => {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
-              selectedCategory
-                ? await updateCategoryInFirestore(values)
-                : await addCategoryToFirestore(values);
+              selectedProduct
+                ? await updateProductInFirestore(values)
+                : await addProductToFirestore(values);
               setSubmitting(false);
-              history.push('/admin/category');
+              history.push('/admin/product');
             } catch (error) {
               toast.error(error.message);
               setSubmitting(false);
@@ -68,9 +75,11 @@ const ProductForm = ({ match, history }) => {
           }}>
           {({ isSubmitting, dirty, isValid }) => (
             <Form className="ui form">
-              <Header sub color="teal" content="Datos de la Categoria" />
-              <MyTextInput name="name" placeholder="Nombre de la categoria" />
-              <MyTextInput name="commentary" placeholder="Comentario sobre la categoria" />
+              <Header sub color="teal" content="Datos del Producto" />
+              <MyTextInput name="categoryId" placeholder="Categoria del producto" />
+              <MyTextInput name="name" placeholder="Nombre del producto" />
+              <MyTextInput name="description" placeholder="Descripcion o comentario" />
+              <MyTextInput name="price" type="number" placeholder="Precio" />
               <MyTextInput name="imagenURL" placeholder="Ruta de la imagen o del Banner" />
               <Button
                 loading={isSubmitting}
@@ -83,7 +92,7 @@ const ProductForm = ({ match, history }) => {
               <Button
                 disabled={isSubmitting}
                 as={Link}
-                to="/admin/category"
+                to="/admin/product"
                 type="button"
                 floated="right"
                 content="Cancel"

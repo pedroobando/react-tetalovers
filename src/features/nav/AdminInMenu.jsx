@@ -9,7 +9,7 @@ const AdminInMenu = () => {
         <Dropdown.Menu>
           <Dropdown.Item as={Link} to="/admin/banner" text="Banner's" icon="plus" />
           <Dropdown.Item as={Link} to="/admin/category" text="Categoria" icon="user" />
-          <Dropdown.Item as={Link} to="/admin/producto" text="Productos" icon="power" />
+          <Dropdown.Item as={Link} to="/admin/product" text="Productos" icon="power" />
           <Dropdown.Item as={Link} to="/admin/marca" text="Marcas" icon="power" />
         </Dropdown.Menu>
       </Dropdown>
