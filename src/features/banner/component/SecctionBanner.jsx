@@ -9,10 +9,12 @@ import { listenToBannersFromFirestore } from '../../../app/firestore/firestoreSe
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 import { listenToBanners } from '../bannerActions';
 
+import './styleSecctionBanner.scss';
+
 const SecctionBanner = () => {
   const dispatch = useDispatch();
   const { banners } = useSelector((state) => state.banner);
-  const { loading } = useSelector((state) => state.async);
+  // const { loading } = useSelector((state) => state.async);
 
   useFirestoreCollection({
     query: () => listenToBannersFromFirestore(),

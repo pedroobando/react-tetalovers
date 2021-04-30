@@ -7,10 +7,12 @@ import { listenToCategoriesFromFirestore } from '../../../app/firestore/firestor
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 import { listenToCategories } from '../categoryActions';
 
+import './styleSecctionCategory.scss';
+
 const SecctionCategory = () => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.category);
-  const { loading } = useSelector((state) => state.async);
+  // const { loading } = useSelector((state) => state.async);
 
   useFirestoreCollection({
     query: () => listenToCategoriesFromFirestore(),

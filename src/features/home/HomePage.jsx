@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import LoadingComponent from '../../app/layout/LoadingComponent';
 
-import SecctionCategory from './SecctionCategory';
+// import SecctionCategory from './SecctionCategory';
 import SecctionBanner from '../banner/component/SecctionBanner';
+import SecctionCategory from '../category/component/SecctionCategory';
 import SecctionBrand from './SecctionBrand';
 import SecctionProduct from './SecctionProduct';
 import SecctionFooter from './SecctionFooter';

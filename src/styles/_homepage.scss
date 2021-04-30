@@ -17,57 +17,6 @@
 //   .slick-slides .slick-next {
 //   }
 // }
-$slickradius: 5%;
-
-.banner {
-  .slick-slider:hover {
-    .slick-prev {
-      left: 0px !important;
-      border-top-right-radius: $slickradius !important;
-      border-bottom-right-radius: $slickradius !important;
-    }
-
-    .slick-next {
-      right: 0px !important;
-      border-top-left-radius: $slickradius !important;
-      border-bottom-left-radius: $slickradius !important;
-    }
-
-    .slick-next:hover,
-    .slick-prev:hover {
-      transition: 0.3s;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
-        rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
-        rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    }
-
-    .slick-prev::before,
-    .slick-next::before {
-      // opacity: 1 !important;
-      color: $colorPrimary !important;
-    }
-
-    .slick-prev,
-    .slick-next {
-      font-size: 0;
-      line-height: 0;
-      position: absolute;
-      top: 50%;
-      display: block;
-      width: 40px;
-      height: 100px;
-      padding: 0;
-      // transform: translate(0, -50%);
-      cursor: pointer;
-      color: transparent;
-      border: none;
-      outline: none;
-      background-color: $colorBackground;
-      z-index: 1 !important;
-      // transition: 0.3s;
-    }
-  }
-}
 
 /*---- brands -----*/
 .brands {
