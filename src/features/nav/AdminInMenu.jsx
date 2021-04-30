@@ -8,14 +8,7 @@ const AdminInMenu = () => {
     //         <Button positive inverted content="Create Event" />
     //       </Menu.Item>
     <Menu.Item>
-      <Dropdown
-        button
-        className="icon"
-        floating
-        labeled
-        search
-        text="Administacion"
-        icon="settings">
+      <Dropdown pointing="top left" text="Administacion">
         <Dropdown.Menu>
           <Dropdown.Item as={Link} to="/admin/banner" text="Banner's" icon="plus" />
           <Dropdown.Item as={Link} to="/admin/category" text="Categoria" icon="user" />
