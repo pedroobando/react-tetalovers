@@ -12,18 +12,4 @@ const SecctionCategoryItem = ({ category }) => {
   );
 };
 
-{
-  /* <Grid.Column mobile={16} tablet={8} computer={4}>
-<Card as={Link} to={`/products?category=${categoryId}`}>
-  <Image src={imagenURL} wrapped ui={false} />
-  <Card.Content>
-    <Card.Header>{name}</Card.Header>
-    <Card.Meta>
-      <span>{commentary}</span>
-    </Card.Meta>
-  </Card.Content>
-</Card>
-</Grid.Column> */
-}
-
 export default SecctionCategoryItem;

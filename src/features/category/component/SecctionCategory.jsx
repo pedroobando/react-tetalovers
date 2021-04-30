@@ -19,12 +19,6 @@ const SecctionCategory = () => {
     deps: [dispatch],
   });
 
-  //   <Grid as="section" className="my-2 category">
-  //   {categories.map((cat, ind) => (
-  //     <SecctionCategoryItem category={cat} key={ind} />
-  //   ))}
-  // </Grid>
-
   return (
     <section className="my-4 categories">
       {categories.map((cat, ind) => (
