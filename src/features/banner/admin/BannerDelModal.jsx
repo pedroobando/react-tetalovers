@@ -4,7 +4,6 @@ import { Button, Divider, Header, Icon } from 'semantic-ui-react';
 import { closeModal } from '../../../app/common/modals/modalReducer';
 import ModalWrapper from '../../../app/common/modals/ModalWrapper';
 import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
-import { deleteBanner } from '../bannerActions';
 
 const BannerDelModal = ({ banner }) => {
   const dispatch = useDispatch();

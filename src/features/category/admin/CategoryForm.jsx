@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { Link, Redirect } from 'react-router-dom';
@@ -20,8 +20,6 @@ import MyTextInput from '../../../app/common/form/MyTextInput';
 const CategoryForm = ({ match, history }) => {
   // global  google
   const dispatch = useDispatch();
-  const [loadingCancel, setLoadingCancel] = useState(false);
-  const [confirmOpen, setConfirmOpen] = useState(false);
   const selectedCategory = useSelector((state) =>
     state.category.categories.find((cat) => cat.id == match.params.id)
   );

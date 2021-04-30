@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import SecctionCategoryItem from './SecctionCategoryItem';
 

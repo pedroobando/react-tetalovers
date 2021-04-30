@@ -20,7 +20,6 @@ import MyTextInput from '../../../app/common/form/MyTextInput';
 const BannerForm = ({ match, history }) => {
   // global  google
   const dispatch = useDispatch();
-  const [loadingCancel, setLoadingCancel] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const selectedBanner = useSelector((state) =>
     state.banner.banners.find((ban) => ban.id == match.params.id)
@@ -38,18 +37,6 @@ const BannerForm = ({ match, history }) => {
     name: Yup.string().required('El nombre es requerido'),
     imagenURL: Yup.string().required('La ruta de la imagen es requerida'),
   });
-
-  // const handleCancelToggle = async (event) => {
-  //   setConfirmOpen(false);
-  //   setLoadingCancel(true);
-  //   try {
-  //     await cancelEventToggle(event);
-  //     setLoadingCancel(false);
-  //   } catch (error) {
-  //     setLoadingCancel(true);
-  //     toast.error(error.message);
-  //   }
-  // };
 
   useFirestoreDoc({
     shouldExecute: !!match.params.id,
@@ -85,16 +72,7 @@ const BannerForm = ({ match, history }) => {
               <MyTextInput name="name" placeholder="Banner titulo" />
               <MyTextInput name="linkURL" placeholder="Hypervinculo, al presionar." />
               <MyTextInput name="imagenURL" placeholder="Ruta de la imagen o del Banner" />
-              {/* {selectedBanner && (
-              <Button
-                loading={loadingCancel}
-                type="button"
-                floated="left"
-                color={selectedBanner.isCancelled ? 'green' : 'red'}
-                content={selectedBanner.isCancelled ? 'Reactivate event' : 'Cancel Event'}
-                onClick={() => setConfirmOpen(true)}
-              />
-            )} */}
+
               <Button
                 loading={isSubmitting}
                 disabled={!isValid || !dirty || isSubmitting}

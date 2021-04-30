@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Dropdown, Menu } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 
 const AdminInMenu = () => {
   return (
-    // <Menu.Item as={NavLink} to="/createEvent">
-    //         <Button positive inverted content="Create Event" />
-    //       </Menu.Item>
     <Menu.Item>
       <Dropdown pointing="top left" text="Administacion">
         <Dropdown.Menu>
