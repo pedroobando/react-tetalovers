@@ -32,8 +32,15 @@ const CategoryItem = ({ category }) => {
                 <Icon name="file text" />
                 Crear Categoria
               </Button>
-              <Button color="red" basic floated="left">
-                <Icon name="remove" /> Remover
+              <Button
+                onClick={() =>
+                  dispatch(
+                    openModal({ modalType: 'CategoryDelModal', modalProps: { category } })
+                  )
+                }
+                color="red"
+                basic>
+                Eliminar
               </Button>
             </Item.Extra>
           </Item.Content>

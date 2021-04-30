@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux';
 import LoginForm from '../../../features/auth/LoginForm';
 import TestModal from '../../../features/sandox/TestModal';
 import BannerDelModal from '../../../features/banner/admin/BannerDelModal';
+import CategoryDelModal from '../../../features/category/admin/CategoryDelModal';
 
 const ModalManager = () => {
   const modalLookup = {
     TestModal,
     LoginForm,
     BannerDelModal,
+    CategoryDelModal,
   };
 
   const currentModal = useSelector((state) => state.modals);
