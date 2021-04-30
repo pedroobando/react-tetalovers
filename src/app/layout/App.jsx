@@ -39,21 +39,21 @@ const App = () => {
               <Route
                 path={['/admin/createBanner', '/admin/banner/:id']}
                 component={BannerForm}
-                key={key}
+                key={`${key}BN`}
               />
 
               <Route exact path="/admin/category" component={CategoryPage} />
               <Route
                 path={['/admin/createCategory', '/admin/category/:id']}
                 component={CategoryForm}
-                key={key}
+                key={`${key}CT`}
               />
 
               <Route exact path="/admin/product" component={ProductPage} />
               <Route
                 path={['/admin/createproduct', '/admin/product/:id']}
                 component={ProductForm}
-                key={key}
+                key={`${key}PD`}
               />
               {/* <Route path="/admin/banner/:id" component={BannerForm} key={key} /> */}
               {/* <Route path={['/createEvent', '/manage/:id']} component={EventForm} key={key} /> */}
