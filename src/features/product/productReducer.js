@@ -3,7 +3,6 @@ import {
   UPDATE_PRODUCT,
   DELETE_PRODUCT,
   FETCH_PRODUCTS,
-  FETCH_PRODUCTBYCAT,
 } from './productConstants';
 
 const initialState = {

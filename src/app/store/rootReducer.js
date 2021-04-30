@@ -5,6 +5,7 @@ import authReducer from '../../features/auth/authReducer';
 import bannerReducer from '../../features/banner/bannerReducer';
 import categoryReducer from '../../features/category/categoryReducer';
 import modalReducer from '../common/modals/modalReducer';
+import productReducer from '../../features/product/productReducer';
 
 const rootReducer = combineReducers({
   test: testReducer,
@@ -13,7 +14,7 @@ const rootReducer = combineReducers({
   async: asyncReducer,
   banner: bannerReducer,
   category: categoryReducer,
-  datapp: bannerReducer,
+  product: productReducer,
 });
 
 export default rootReducer;

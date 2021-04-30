@@ -90,3 +90,30 @@ export const updateCategoryInFirestore = (category) => {
 export const deleteCategoryInFirestore = (categoryId) => {
   return db.collection('categories').doc(categoryId).delete();
 };
+
+// Products
+export const listenToProductsFromFirestore = () => {
+  return db.collection('products');
+};
+
+export const listenToProductsByCatFromFirestore = (categoryId) => {
+  return db.collection('products').where('categoryId', '==', categoryId);
+};
+
+export const listenToProductFromFirestore = (productId) => {
+  return db.collection('products').doc(productId);
+};
+
+export const addProductToFirestore = (product) => {
+  return db.collection('products').add({
+    ...product,
+  });
+};
+
+export const updateProductInFirestore = (product) => {
+  return db.collection('products').doc(product.id).update(product);
+};
+
+export const deleteProductInFirestore = (productId) => {
+  return db.collection('products').doc(productId).delete();
+};
