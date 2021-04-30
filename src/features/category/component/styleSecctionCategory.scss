@@ -1,8 +1,37 @@
-.ui.grid {
-  // display: flex;
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  // align-items: stretch;
-  // padding: 0;
-  justify-content: space-around !important;
+@import '../../../styles/styles.scss';
+
+.categories {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .categoryItem {
+    display: inline-block !important;
+    width: 180px;
+
+    img {
+      width: 100%;
+      cursor: pointer;
+      // filter: grayscale(100%);
+      transition: transform 1.5s;
+      box-shadow: 0px 0px 0px 2px $colorPrimaryBase;
+    }
+
+    img:hover {
+      // filter: grayscale(60%);
+      // background-color: #e65525;
+      // border-radius: 50%;
+      box-shadow: 0px 0px 0px 2px $colorSecondary;
+    }
+  }
 }
+
+// .ui.column.grid > [class*="eight wide mobile"].column, .ui.grid > .column.row > [class*="eight wide mobile"].column, .ui.grid > .row > [class*="eight wide mobile"].column, .ui.grid > [class*="eight wide mobile"].column {
+// 	width: 50% !important;
+// }
+
+// a {
+// 	background-color: transparent;
+// 	-webkit-text-decoration-skip: objects;
+// }
