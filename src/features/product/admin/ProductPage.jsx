@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import { listenToProductsFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
-import { menuActivo } from '../../nav/menuReducer';
 import { listenToProducts } from '../productActions';
+import { menuActivo } from '../../nav/menuReducer';
 import ProductItem from './ProductItem';
 
 import './styleProductPage.scss';
@@ -28,7 +28,7 @@ const ProductPage = () => {
   });
 
   return (
-    <Container className="pst-5">
+    <Container className="pst-5 product">
       {products.map((prd, idx) => (
         <ProductItem product={prd} key={idx} />
       ))}

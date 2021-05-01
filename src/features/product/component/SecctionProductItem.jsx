@@ -8,7 +8,7 @@ const SecctionProductItem = ({ product }) => {
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
       <Card as={Link} to={`/products?product=${productId}`}>
-        <Image src={imagenURL} wrapped ui={false} />
+        <Image src={imagenURL} wrapped />
         <Card.Content>
           <Card.Header>{name}</Card.Header>
           <Card.Meta>

@@ -1,16 +1,38 @@
 @import '../../../styles/styles.scss';
 
-.ui.card {
-  width: 250px !important;
+.ui.container.product {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: stretch !important;
+  // max-width: 100% !important;
+
+  .ui.card {
+    // background-color: $colorPrimaryBase !important;
+    // border-color: $colorPrimaryBase !important;
+    width: 250px !important;
+    margin: 0 !important;
+
+    .image > img {
+      height: 250px !important;
+    }
+
+    .statistic > .value {
+      font-size: 2rem !important;
+    }
+  }
 }
 
-.ui.card > :first-child,
-.ui.cards > .card > :first-child {
-  background-color: $colorPrimaryBase !important;
-  border-color: $colorPrimaryBase !important;
-}
+// .ui.card {
+//   width: 250px !important;
+// }
 
-.ui.card > .image > img,
-.ui.cards > .card > .image > img {
-  height: 250px !important;
-}
+// .ui.card > :first-child,
+// .ui.cards > .card > :first-child {
+//   background-color: $colorPrimaryBase !important;
+//   border-color: $colorPrimaryBase !important;
+// }
+
+// .ui.card > .image > img,
+// .ui.cards > .card > .image > img {
+//   height: 250px !important;
+// }

@@ -11,17 +11,22 @@ const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
   const { id, categoryId, name, description, imagenURL, price } = product;
 
+  const priceFormat = new Intl.NumberFormat('de-DE').format(price);
+  // const priceFormat = formatter.format(price);
+
   return (
     <Card>
-      <Label attached="top">{categoryId}</Label>
-      <Image src={imagenURL} wrapped ui={false} />
+      <Label attached="top" color="brown">
+        {categoryId}
+      </Label>
+      <Image src={imagenURL} wrapped alt={name} />
       <Card.Content extra>
         <Card.Header>{name}</Card.Header>
         <Card.Description>{description}</Card.Description>
         <div className="right aligned content">
-          <Statistic horizontal color="pink">
+          <Statistic color="pink">
             <Statistic.Label>Precio:</Statistic.Label>
-            <Statistic.Value>{price}</Statistic.Value>
+            <Statistic.Value>{priceFormat}</Statistic.Value>
           </Statistic>
         </div>
       </Card.Content>
