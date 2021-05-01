@@ -16,6 +16,7 @@ import {
 import * as Yup from 'yup';
 
 import MyTextInput from '../../../app/common/form/MyTextInput';
+import MyFileInput from '../../../app/common/form/MyFileInput';
 
 const ProductForm = ({ match, history }) => {
   // global  google
@@ -62,6 +63,7 @@ const ProductForm = ({ match, history }) => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
+            console.log(values);
             try {
               selectedProduct
                 ? await updateProductInFirestore(values)
@@ -80,7 +82,13 @@ const ProductForm = ({ match, history }) => {
               <MyTextInput name="name" placeholder="Nombre del producto" />
               <MyTextInput name="description" placeholder="Descripcion o comentario" />
               <MyTextInput name="price" type="number" placeholder="Precio" />
-              <MyTextInput name="imagenURL" placeholder="Ruta de la imagen o del Banner" />
+              {/* <MyTextInput name="imagenURL" placeholder="Ruta de la imagen o del Banner" /> */}
+              <MyFileInput
+                id="uploadfile"
+                name="imagenURL"
+                placeholder="Indique la imagen a subir"
+              />
+
               <Button
                 loading={isSubmitting}
                 disabled={!isValid || !dirty || isSubmitting}
