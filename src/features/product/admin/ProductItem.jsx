@@ -1,14 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Card, Divider, Icon, Image, Label, Statistic } from 'semantic-ui-react';
-import { openModal } from '../../../app/common/modals/modalReducer';
+import { Button, Card, Icon, Image, Label, Statistic } from 'semantic-ui-react';
 
 // import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
 // import BannerDelete from './BannerDelModal';
 
 const ProductItem = ({ product }) => {
-  const dispatch = useDispatch();
   const { id, categoryId, name, description, imagenURL, price } = product;
 
   const priceFormat = new Intl.NumberFormat('de-DE').format(price);
