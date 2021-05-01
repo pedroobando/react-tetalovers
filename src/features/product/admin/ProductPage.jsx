@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import { listenToProductsFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 import { listenToProducts } from '../productActions';
-import { menuActivo } from '../../nav/menuReducer';
+import { menuActivo, menuDesactivo } from '../../nav/menuReducer';
 import ProductItem from './ProductItem';
 
 import './styleProductPage.scss';
@@ -14,12 +14,17 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
 
-  dispatch(
-    menuActivo({
-      createURL: '/admin/createProduct',
-      createText: 'Crear Producto',
-    })
-  );
+  useEffect(() => {
+    dispatch(
+      menuActivo({
+        createURL: '/admin/createProduct',
+        createText: 'Crear Producto',
+      })
+    );
+    return () => {
+      dispatch(menuDesactivo());
+    };
+  }, [dispatch]);
 
   useFirestoreCollection({
     query: () => listenToProductsFromFirestore(),

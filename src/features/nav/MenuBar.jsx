@@ -1,17 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Container, Menu } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import SignedOutMenu from './SignedOutMenu';
 import SignedInMenu from './SignedInMenu';
 import AdminInMenu from './AdminInMenu';
-import { menuDesactivo } from './menuReducer';
+// import { menuDesactivo } from './menuReducer';
 
 const MenuBar = () => {
-  const dispatch = useDispatch();
   const { authenticated } = useSelector((state) => state.auth);
 
-  dispatch(menuDesactivo());
+  // dispatch(menuDesactivo());
 
   return (
     // inverted

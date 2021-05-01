@@ -17,7 +17,7 @@ const AdminInMenu = () => {
           </Dropdown.Menu>
         </Dropdown>
       </Menu.Item>
-      {menuActive && currentMenu && (
+      {menuActive && (
         <Menu.Item as={NavLink} to={currentMenu.createURL}>
           <Button positive inverted content={currentMenu.createText} />
         </Menu.Item>
