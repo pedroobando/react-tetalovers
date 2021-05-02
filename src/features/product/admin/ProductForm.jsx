@@ -61,6 +61,18 @@ const ProductForm = ({ match, history }) => {
     setFileUpload(file);
   };
 
+  const cloudFileUpdate = async (values) => {
+    const cloudfile = await uploadToCloudinary({ file: fileUpload });
+    // console.log(cloudfile);
+    values.imagenURL = cloudfile.secure_url;
+    values.imagenFile = {
+      ...values.imagenFile,
+      imagenURL: cloudfile.secure_url,
+      cloudata: cloudfile,
+    };
+    return values;
+  };
+
   if (loading) return <LoadingComponent content="Loading productos.." />;
   if (error) return <Redirect to="/error" />;
 
@@ -71,16 +83,8 @@ const ProductForm = ({ match, history }) => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            const cloudfile = await uploadToCloudinary({ file: fileUpload });
-            // console.log(cloudfile);
-            values.imagenURL = cloudfile.secure_url;
-            values.imagenFile = {
-              ...values.imagenFile,
-              imagenURL: cloudfile.secure_url,
-              cloudata: cloudfile,
-            };
-
             try {
+              values = await cloudFileUpdate(values);
               selectedProduct
                 ? await updateProductInFirestore(values)
                 : await addProductToFirestore(values);
