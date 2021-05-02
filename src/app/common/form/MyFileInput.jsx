@@ -3,7 +3,7 @@ import { useField } from 'formik';
 import { FormField, Label } from 'semantic-ui-react';
 
 const MyFileInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field, meta, helpers] = useField(props);
   // console.log(field);
   // console.log({ ...props });
 
@@ -11,29 +11,29 @@ const MyFileInput = ({ label, ...props }) => {
     document.querySelector('#fileSelector').click();
   };
   const handleFileChange = (e) => {
-    // console.log(e.target.files);
+    if (e.target.files.length == 0) return;
+
     const { name } = e.target.files[0];
-    field.value = name;
-    document.querySelector(`#${props.id}`).value = name;
-    console.log(field);
-    // document.querySelector([])
+    helpers.setValue(name);
   };
   return (
     <FormField error={meta.touched && !!meta.error}>
       <label>{label}</label>
-      <div className="ui action input">
-        <input
-          type="file"
-          id="fileSelector"
-          // {...field}
-          // {...props}
-          onChange={handleFileChange}
-          style={{ display: 'none' }}
-        />
-        <input {...field} {...props} />
-        <button type="button" className="ui button" onClick={() => handlePictureClick()}>
+      <input
+        type="file"
+        id="fileSelector"
+        onChange={handleFileChange}
+        style={{ display: 'none' }}
+      />
+      <div className="ui left action input disabled">
+        <button
+          type="button"
+          className="ui teal labeled icon button"
+          onClick={handlePictureClick}>
+          <i className="search icon" />
           Buscar
         </button>
+        <input {...field} value={field.value} {...props} />
       </div>
       {meta.touched && meta.error ? (
         <Label basic color="red">
