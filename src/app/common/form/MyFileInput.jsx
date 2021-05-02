@@ -15,10 +15,8 @@ const MyFileInput = ({ label, onfileupload, ...props }) => {
     if (file) {
       helpers.setValue({
         name: file.name,
-        lastModified: file.lastModified,
-        webkitRelativePath: file.webkitRelativePath,
-        size: file.size,
-        type: file.type,
+        cloudata: null,
+        imagenURL: '',
       });
       if (typeof onfileupload === 'function') onfileupload(file);
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { Link, Redirect } from 'react-router-dom';
@@ -18,9 +18,12 @@ import * as Yup from 'yup';
 import MyTextInput from '../../../app/common/form/MyTextInput';
 import MyFileInput from '../../../app/common/form/MyFileInput';
 
+import { uploadToCloudinary } from '../../../app/cloudinary/cloudinaryService';
+
 const ProductForm = ({ match, history }) => {
   // global  google
   const dispatch = useDispatch();
+  const [fileUpload, setFileUpload] = useState(null);
   const selectedProduct = useSelector((state) =>
     state.product.products.find((prd) => prd.id == match.params.id)
   );
@@ -55,7 +58,7 @@ const ProductForm = ({ match, history }) => {
   });
 
   const handleFileUpload = (file) => {
-    console.log(file);
+    setFileUpload(file);
   };
 
   if (loading) return <LoadingComponent content="Loading productos.." />;
@@ -68,7 +71,15 @@ const ProductForm = ({ match, history }) => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log(values);
+            const cloudfile = await uploadToCloudinary({ file: fileUpload });
+            // console.log(cloudfile);
+            values.imagenURL = cloudfile.secure_url;
+            values.imagenFile = {
+              ...values.imagenFile,
+              imagenURL: cloudfile.secure_url,
+              cloudata: cloudfile,
+            };
+
             try {
               selectedProduct
                 ? await updateProductInFirestore(values)

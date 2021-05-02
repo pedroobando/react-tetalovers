@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import { listenToBannersFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
-import { menuActivo, menuDesactivo } from '../../nav/menuReducer';
+import { useMenuButtonCreate } from '../../../app/hooks/useMenuButtonCreate';
 import { listenToBanners } from '../bannerActions';
 import BannerItem from './BannerItem';
 
@@ -13,19 +13,11 @@ const BannerPage = () => {
   const { banners } = useSelector((state) => state.banner);
   // const { loading } = useSelector((state) => state.async);
 
-  useEffect(() => {
-    dispatch(
-      menuActivo({
-        createURL: '/admin/createBanner',
-        createText: 'Crear Banner',
-        updateURL: '/admin/banner/',
-        updateText: 'Actualizar',
-      })
-    );
-    return () => {
-      dispatch(menuDesactivo());
-    };
-  }, [dispatch]);
+  useMenuButtonCreate({
+    createURL: '/admin/createbanner',
+    createText: 'Crear Banner',
+    deps: [dispatch],
+  });
 
   useFirestoreCollection({
     query: () => listenToBannersFromFirestore(),
