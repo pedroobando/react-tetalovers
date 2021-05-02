@@ -4,13 +4,14 @@
   display: flex !important;
   justify-content: space-around !important;
   align-items: stretch !important;
+  flex-wrap: wrap;
   // max-width: 100% !important;
 
   .ui.card {
     // background-color: $colorPrimaryBase !important;
     // border-color: $colorPrimaryBase !important;
     width: 250px !important;
-    margin: 0 !important;
+    margin: 1em 0px !important;
 
     .image > img {
       height: 250px !important;

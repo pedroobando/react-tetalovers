@@ -35,6 +35,7 @@ const ProductForm = ({ match, history }) => {
     isNew: true,
     isPromotion: true,
     price: 0,
+    imagenFile: { name: '' },
   };
 
   const validationSchema = Yup.object({
@@ -52,6 +53,10 @@ const ProductForm = ({ match, history }) => {
     data: (product) => dispatch(listenToProducts([product])),
     deps: [match.params.id, dispatch],
   });
+
+  const handleFileUpload = (file) => {
+    console.log(file);
+  };
 
   if (loading) return <LoadingComponent content="Loading productos.." />;
   if (error) return <Redirect to="/error" />;
@@ -84,8 +89,8 @@ const ProductForm = ({ match, history }) => {
               <MyTextInput name="price" type="number" placeholder="Precio" />
               {/* <MyTextInput name="imagenURL" placeholder="Ruta de la imagen o del Banner" /> */}
               <MyFileInput
-                id="uploadfile"
-                name="imagenURL"
+                name="imagenFile"
+                onfileupload={(e) => handleFileUpload(e)}
                 placeholder="Indique la imagen a subir"
               />
 
