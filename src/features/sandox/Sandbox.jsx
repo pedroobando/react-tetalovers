@@ -6,6 +6,7 @@ import { TestMap } from './TestMap';
 import { decrement, increment } from './testRedux';
 
 import TestPlaceInput from './TestPlaceInput';
+import TestCloudinary from './TestCloudinary';
 
 const initialStateMapLocation = {
   address: '',
@@ -74,6 +75,10 @@ const Sandbox = () => {
       <label name="coord">{JSON.stringify(mapLocation.latLng)}</label>
       <br />
       <code>{JSON.stringify(zona)}</code>
+
+      <hr />
+
+      <TestCloudinary />
 
       <TestPlaceInput
         name="address"
