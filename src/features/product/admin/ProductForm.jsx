@@ -71,8 +71,6 @@ const ProductForm = ({ match, history }) => {
       }
     }
 
-    console.log(values.imagenFile.id, initialValues.imagenFile.id);
-
     if (
       !selectedProduct ||
       initialValues.imagenFile.id === '' ||
@@ -88,6 +86,9 @@ const ProductForm = ({ match, history }) => {
     return values;
   };
 
+  // ? await updateProductInFirestore(values)
+  // : await addProductToFirestore(values);
+
   if (loading) return <LoadingComponent content="Loading productos.." />;
   if (error) return <Redirect to="/error" />;
 
@@ -100,7 +101,6 @@ const ProductForm = ({ match, history }) => {
           onSubmit={async (values, { setSubmitting }) => {
             try {
               values = await cloudFileUpdate(values);
-              console.log(values);
               selectedProduct
                 ? await updateProductInFirestore(values)
                 : await addProductToFirestore(values);
