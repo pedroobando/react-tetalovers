@@ -6,7 +6,7 @@ import { Button, Card, Icon, Image, Label, Statistic } from 'semantic-ui-react';
 // import BannerDelete from './BannerDelModal';
 
 const ProductItem = ({ product }) => {
-  const { id, categoryId, name, description, imagenURL, price } = product;
+  const { id, categoryId, name, description, imagenFile, price } = product;
 
   const priceFormat = new Intl.NumberFormat('de-DE').format(price);
   // const priceFormat = formatter.format(price);
@@ -16,7 +16,7 @@ const ProductItem = ({ product }) => {
       <Label attached="top" color="brown">
         {categoryId}
       </Label>
-      <Image src={imagenURL} wrapped alt={name} />
+      <Image src={imagenFile.url} wrapped alt={name} />
       <Card.Content extra>
         <Card.Header>{name}</Card.Header>
         <Card.Description>{description}</Card.Description>

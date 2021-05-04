@@ -15,8 +15,8 @@ const MyFileInput = ({ label, onfileupload, ...props }) => {
     if (file) {
       helpers.setValue({
         name: file.name,
-        cloudata: null,
-        imagenURL: '',
+        url: '',
+        id: '',
       });
       if (typeof onfileupload === 'function') onfileupload(file);
     }

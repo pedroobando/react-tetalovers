@@ -6,17 +6,10 @@ const cloudURL = 'https://api.cloudinary.com/v1_1/dj34u7d2f7o/upload';
 
 import cloudinary, { UPLOAD_PRESET } from '../config/cloudinary';
 
-export const uploadToCloudinary = async ({ file }) => {
+export const uploadToCloudinary = async (file) => {
   const formData = new FormData();
   formData.append('upload_preset', UPLOAD_PRESET);
   formData.append('file', file);
-
-  // cloudinary.uploader.upload(file, {
-  //   eager: [
-  //     { width: 400, height: 300, crop: 'pad' },
-  //     { width: 260, height: 200, crop: 'crop', gravity: 'north' },
-  //   ],
-  // });
 
   try {
     const resp = await fetch(cloudURL, { method: 'POST', body: formData });
@@ -28,7 +21,7 @@ export const uploadToCloudinary = async ({ file }) => {
 };
 
 export const removeToCloudinary = async (fileId) => {
-  return await cloudinary.uploader.destroy(`${UPLOAD_PRESET}/${fileId}`);
+  return await cloudinary.uploader.destroy(fileId);
 };
 
 // export const listenToBannersFromFirestore = () => {

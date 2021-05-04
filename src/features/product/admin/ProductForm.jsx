@@ -18,7 +18,10 @@ import * as Yup from 'yup';
 import MyTextInput from '../../../app/common/form/MyTextInput';
 import MyFileInput from '../../../app/common/form/MyFileInput';
 
-import { uploadToCloudinary } from '../../../app/cloudinary/cloudinaryService';
+import {
+  removeToCloudinary,
+  uploadToCloudinary,
+} from '../../../app/cloudinary/cloudinaryService';
 
 const ProductForm = ({ match, history }) => {
   // global  google
@@ -32,13 +35,12 @@ const ProductForm = ({ match, history }) => {
   const initialValues = selectedProduct ?? {
     categoryId: '',
     description: '',
-    imagenURL: '',
     name: '',
     isActive: true,
     isNew: true,
     isPromotion: true,
     price: 0,
-    imagenFile: { name: '' },
+    imagenFile: { name: '', id: '', url: '' },
   };
 
   const validationSchema = Yup.object({
@@ -62,14 +64,27 @@ const ProductForm = ({ match, history }) => {
   };
 
   const cloudFileUpdate = async (values) => {
-    const cloudfile = await uploadToCloudinary({ file: fileUpload });
-    // console.log(cloudfile);
-    values.imagenURL = cloudfile.secure_url;
-    values.imagenFile = {
-      ...values.imagenFile,
-      imagenURL: cloudfile.secure_url,
-      cloudata: cloudfile,
-    };
+    if (selectedProduct) {
+      if (values.imagenFile.id !== initialValues.imagenFile.id) {
+        const { id } = initialValues.imagenFile;
+        await removeToCloudinary(id);
+      }
+    }
+
+    console.log(values.imagenFile.id, initialValues.imagenFile.id);
+
+    if (
+      !selectedProduct ||
+      initialValues.imagenFile.id === '' ||
+      values.imagenFile.id !== initialValues.imagenFile.id
+    ) {
+      const cloudfile = await uploadToCloudinary(fileUpload);
+      values.imagenFile = {
+        ...values.imagenFile,
+        url: cloudfile.secure_url,
+        id: cloudfile.public_id,
+      };
+    }
     return values;
   };
 
@@ -85,6 +100,7 @@ const ProductForm = ({ match, history }) => {
           onSubmit={async (values, { setSubmitting }) => {
             try {
               values = await cloudFileUpdate(values);
+              console.log(values);
               selectedProduct
                 ? await updateProductInFirestore(values)
                 : await addProductToFirestore(values);
@@ -102,7 +118,6 @@ const ProductForm = ({ match, history }) => {
               <MyTextInput name="name" placeholder="Nombre del producto" />
               <MyTextInput name="description" placeholder="Descripcion o comentario" />
               <MyTextInput name="price" type="number" placeholder="Precio" />
-              {/* <MyTextInput name="imagenURL" placeholder="Ruta de la imagen o del Banner" /> */}
               <MyFileInput
                 name="imagenFile"
                 onfileupload={(e) => handleFileUpload(e)}
