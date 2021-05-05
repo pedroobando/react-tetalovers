@@ -6,7 +6,7 @@ import ModalWrapper from '../../../app/common/modals/ModalWrapper';
 import { deleteCategoryInFirestore } from '../../../app/firestore/firestoreService';
 // import { deleteCategory } from '../categoryActions';
 
-const CategoryDelModal = ({ category }) => {
+const ProductDelModal = ({ category }) => {
   const dispatch = useDispatch();
 
   return (
@@ -41,4 +41,4 @@ const CategoryDelModal = ({ category }) => {
   );
 };
 
-export default CategoryDelModal;
+export default ProductDelModal;
