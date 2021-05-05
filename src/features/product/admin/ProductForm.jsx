@@ -49,18 +49,20 @@ const ProductForm = ({ match, history }) => {
   const { loading, error } = useSelector((state) => state.async);
 
   const initialValues = selectedProduct ?? {
-    categoryId: '',
+    category: { id: '', name: '' },
     description: '',
     name: '',
     isActive: true,
     isNew: true,
     isPromotion: true,
     price: 0,
-    imagenFile: { name: '', id: '', url: '' },
+    imagenFile: { id: '', name: '', url: '' },
   };
 
   const validationSchema = Yup.object({
-    categoryId: Yup.string().required('La cetegoria a la cual pertenece el producto'),
+    category: Yup.object().shape({
+      name: Yup.string().required('La categoria del producto es requerida'),
+    }),
     name: Yup.string().required('El nombre de producto es requerido'),
     description: Yup.string().required(
       'Una breve descripcion del producto, ayudara a conocer un poca mas es este.'
@@ -122,11 +124,10 @@ const ProductForm = ({ match, history }) => {
             <Form className="ui form">
               <Header sub color="teal" content="Datos del Producto" />
               <MySelectInput
-                name="categoryId"
+                name="category"
                 placeholder="Categoria del producto"
                 options={dataCategories}
               />
-              <MyTextInput name="categoryId" placeholder="Categoria del producto" />
               <MyTextInput name="name" placeholder="Nombre del producto" />
               <MyTextInput name="description" placeholder="Descripcion o comentario" />
               <MyTextInput name="price" type="number" placeholder="Precio" />

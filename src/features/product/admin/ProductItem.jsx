@@ -6,15 +6,14 @@ import { Button, Card, Icon, Image, Label, Statistic } from 'semantic-ui-react';
 // import BannerDelete from './BannerDelModal';
 
 const ProductItem = ({ product }) => {
-  const { id, categoryId, name, description, imagenFile, price } = product;
+  const { id, category, name, description, imagenFile, price } = product;
 
   const priceFormat = new Intl.NumberFormat('de-DE').format(price);
-  // const priceFormat = formatter.format(price);
 
   return (
     <Card>
       <Label attached="top" color="brown">
-        {categoryId}
+        {category.name}
       </Label>
       <Image src={imagenFile.url} wrapped alt={name} />
       <Card.Content extra>
