@@ -1,9 +1,5 @@
 const cloudURL = 'https://api.cloudinary.com/v1_1/dj34u7d2f7o/upload';
 
-// import Cloudinary from 'cloudinary';
-// const cloudinary = require('cloudinary/lib/cloudinary');
-// const FileReader = new filereader();
-
 import cloudinary, { UPLOAD_PRESET } from '../config/cloudinary';
 
 export const uploadToCloudinary = async (file) => {

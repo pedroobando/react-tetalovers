@@ -11,12 +11,15 @@ import {
   listenToProductFromFirestore,
   updateProductInFirestore,
   addProductToFirestore,
+  listenToCategoriesFromFirestore,
 } from '../../../app/firestore/firestoreService';
+import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 
 import * as Yup from 'yup';
 
 import MyTextInput from '../../../app/common/form/MyTextInput';
 import MyFileInput from '../../../app/common/form/MyFileInput';
+import MySelectInput from '../../../app/common/form/MySelectInput';
 
 import {
   removeToCloudinary,
@@ -25,11 +28,24 @@ import {
 
 const ProductForm = ({ match, history }) => {
   // global  google
+
+  const [dataCategories, setDataCategories] = useState([]);
   const dispatch = useDispatch();
   const [fileUpload, setFileUpload] = useState(null);
   const selectedProduct = useSelector((state) =>
     state.product.products.find((prd) => prd.id == match.params.id)
   );
+
+  useFirestoreCollection({
+    query: () => listenToCategoriesFromFirestore(),
+    data: (categories) =>
+      setDataCategories(
+        categories.map((cat) => ({ key: cat.id, value: cat.id, text: cat.name }))
+      ),
+    deps: [dispatch],
+  });
+
+  // const categoryData = listenToCategoriesFromFirestore();
   const { loading, error } = useSelector((state) => state.async);
 
   const initialValues = selectedProduct ?? {
@@ -64,30 +80,21 @@ const ProductForm = ({ match, history }) => {
   };
 
   const cloudFileUpdate = async (values) => {
-    if (selectedProduct) {
-      if (values.imagenFile.id !== initialValues.imagenFile.id) {
-        const { id } = initialValues.imagenFile;
-        await removeToCloudinary(id);
-      }
+    if (selectedProduct && fileUpload) {
+      const { id } = initialValues.imagenFile;
+      await removeToCloudinary(id);
     }
 
-    if (
-      !selectedProduct ||
-      initialValues.imagenFile.id === '' ||
-      values.imagenFile.id !== initialValues.imagenFile.id
-    ) {
+    if (fileUpload) {
       const cloudfile = await uploadToCloudinary(fileUpload);
-      values.imagenFile = {
-        ...values.imagenFile,
+      return {
+        ...values,
         url: cloudfile.secure_url,
         id: cloudfile.public_id,
       };
     }
     return values;
   };
-
-  // ? await updateProductInFirestore(values)
-  // : await addProductToFirestore(values);
 
   if (loading) return <LoadingComponent content="Loading productos.." />;
   if (error) return <Redirect to="/error" />;
@@ -100,7 +107,7 @@ const ProductForm = ({ match, history }) => {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
-              values = await cloudFileUpdate(values);
+              values.imagenFile = await cloudFileUpdate(values.imagenFile);
               selectedProduct
                 ? await updateProductInFirestore(values)
                 : await addProductToFirestore(values);
@@ -114,6 +121,11 @@ const ProductForm = ({ match, history }) => {
           {({ isSubmitting, dirty, isValid }) => (
             <Form className="ui form">
               <Header sub color="teal" content="Datos del Producto" />
+              <MySelectInput
+                name="categoryId"
+                placeholder="Categoria del producto"
+                options={dataCategories}
+              />
               <MyTextInput name="categoryId" placeholder="Categoria del producto" />
               <MyTextInput name="name" placeholder="Nombre del producto" />
               <MyTextInput name="description" placeholder="Descripcion o comentario" />
