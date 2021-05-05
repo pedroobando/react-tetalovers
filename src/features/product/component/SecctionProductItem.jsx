@@ -1,18 +1,21 @@
 import React from 'react';
 import { Button, Card, Grid, Icon, Image, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+// import CategoryDelModal from '../../category/admin/CategoryDelModal';
 
 const SecctionProductItem = ({ product }) => {
-  const { productId, name, description, imagenURL, price } = product;
+  const { id, name, description, imagenFile, price, category } = product;
 
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
-      <Card as={Link} to={`/products?product=${productId}`}>
-        <Image src={imagenURL} wrapped />
+      <Card as={Link} to={`/products?product=${id}`}>
+        <Image src={imagenFile.url} wrapped alt={name} />
         <Card.Content>
           <Card.Header>{name}</Card.Header>
+
           <Card.Meta>
-            <span>{description}</span>
+            <span className="ui brown horizontal label">{category.name}</span>
+            <div>{description}</div>
           </Card.Meta>
         </Card.Content>
         <Card.Content extra>
