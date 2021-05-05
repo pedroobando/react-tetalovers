@@ -5,7 +5,6 @@ import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Container, Confirm, Header, Segment, Button } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
-import { listenToBanners } from '../bannerActions';
 import { useFirestoreDoc } from '../../../app/hooks/useFirestoreDoc';
 import {
   addBannerToFirestore,
