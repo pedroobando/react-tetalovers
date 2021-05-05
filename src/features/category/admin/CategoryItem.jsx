@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import { Button, Divider, Icon, Item, Segment } from 'semantic-ui-react';
 import { openModal } from '../../../app/common/modals/modalReducer';
 
-// import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
-// import BannerDelete from './BannerDelModal';
-
 const CategoryItem = ({ category }) => {
   const dispatch = useDispatch();
   const { name, imagenURL, commentary, id } = category;

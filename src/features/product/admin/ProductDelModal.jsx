@@ -3,17 +3,18 @@ import { useDispatch } from 'react-redux';
 import { Button, Divider, Header, Icon } from 'semantic-ui-react';
 import { closeModal } from '../../../app/common/modals/modalReducer';
 import ModalWrapper from '../../../app/common/modals/ModalWrapper';
-import { deleteCategoryInFirestore } from '../../../app/firestore/firestoreService';
-// import { deleteCategory } from '../categoryActions';
+import { deleteProductInFirestore } from '../../../app/firestore/firestoreService';
 
-const ProductDelModal = ({ category }) => {
+import { removeToCloudinary } from '../../../app/cloudinary/cloudinaryService';
+
+const ProductDelModal = ({ product }) => {
   const dispatch = useDispatch();
 
   return (
-    <ModalWrapper size="small" header="Remover esta categoria">
+    <ModalWrapper size="small" header="Remover este producto">
       <Header as="h2" icon textAlign="center">
         <Icon name="remove" color="red" circular />
-        <Header.Content>Esta categoria {category.name}, sera eliminada</Header.Content>
+        <Header.Content>Este producto {product.name}, sera eliminado</Header.Content>
       </Header>
       <Divider fitted />
       <div className="my-3">
@@ -30,7 +31,8 @@ const ProductDelModal = ({ category }) => {
           floated="right"
           className="px-5"
           onClick={async () => {
-            await deleteCategoryInFirestore(category.id);
+            await removeToCloudinary(product.imagenFile.id);
+            await deleteProductInFirestore(product.id);
             dispatch(closeModal());
           }}>
           <Icon name="checkmark" /> Continuar

@@ -4,6 +4,7 @@ import LoginForm from '../../../features/auth/LoginForm';
 import TestModal from '../../../features/sandox/TestModal';
 import BannerDelModal from '../../../features/banner/admin/BannerDelModal';
 import CategoryDelModal from '../../../features/category/admin/CategoryDelModal';
+import ProductDelModal from '../../../features/product/admin/ProductDelModal';
 
 const ModalManager = () => {
   const modalLookup = {
@@ -11,6 +12,7 @@ const ModalManager = () => {
     LoginForm,
     BannerDelModal,
     CategoryDelModal,
+    ProductDelModal,
   };
 
   const currentModal = useSelector((state) => state.modals);

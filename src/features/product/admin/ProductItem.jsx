@@ -1,11 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Card, Icon, Image, Label, Statistic } from 'semantic-ui-react';
-
-// import { deleteBannerInFirestore } from '../../../app/firestore/firestoreService';
-// import BannerDelete from './BannerDelModal';
+import { openModal } from '../../../app/common/modals/modalReducer';
 
 const ProductItem = ({ product }) => {
+  const dispatch = useDispatch();
   const { id, category, name, description, imagenFile, price } = product;
 
   const priceFormat = new Intl.NumberFormat('de-DE').format(price);
@@ -27,7 +27,12 @@ const ProductItem = ({ product }) => {
         </div>
       </Card.Content>
       <Card.Content>
-        <Button size="small" color="red" basic floated="left">
+        <Button
+          onClick={() =>
+            dispatch(openModal({ modalType: 'ProductDelModal', modalProps: { product } }))
+          }
+          color="red"
+          basic>
           Eliminar
         </Button>
         <Button as={Link} size="small" to={`product/${id}`} primary floated="right">
