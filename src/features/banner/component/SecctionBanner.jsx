@@ -1,25 +1,25 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 
-// import { Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 
 import { listenToBannersFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
-import { listenToBanners } from '../bannerActions';
+// import { listenToBanners } from '../bannerActions';
 
 import './styleSecctionBanner.scss';
 
+const initialState = [];
+
 const SecctionBanner = () => {
-  const dispatch = useDispatch();
-  const { banners } = useSelector((state) => state.banner);
+  const [banners, setBanners] = useState(initialState);
+  // const { banners } = useSelector((state) => state.banner);
   // const { loading } = useSelector((state) => state.async);
 
   useFirestoreCollection({
     query: () => listenToBannersFromFirestore(),
-    data: (banners) => dispatch(listenToBanners(banners)),
-    deps: [dispatch],
+    data: (banners) => setBanners([...banners]),
+    deps: [],
   });
 
   const settings = {

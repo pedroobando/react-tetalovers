@@ -17,21 +17,20 @@ import * as Yup from 'yup';
 
 import MyTextInput from '../../../app/common/form/MyTextInput';
 
+const initialValues = {
+  name: '',
+  imagenURL: '',
+  linkURL: '',
+  date: '',
+};
+
 const BannerForm = ({ match, history }) => {
   // global  google
   const dispatch = useDispatch();
+  const [selectedBanner, setSelectedBanner] = useState(initialValues);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const selectedBanner = useSelector((state) =>
-    state.banner.banners.find((ban) => ban.id == match.params.id)
-  );
-  const { loading, error } = useSelector((state) => state.async);
 
-  const initialValues = selectedBanner ?? {
-    name: '',
-    imagenURL: '',
-    linkURL: '',
-    date: '',
-  };
+  const { loading, error } = useSelector((state) => state.async);
 
   const validationSchema = Yup.object({
     name: Yup.string().required('El nombre es requerido'),
@@ -41,7 +40,7 @@ const BannerForm = ({ match, history }) => {
   useFirestoreDoc({
     shouldExecute: !!match.params.id,
     query: () => listenToBannerFromFirestore(match.params.id),
-    data: (banner) => dispatch(listenToBanners([banner])),
+    data: (banner) => setSelectedBanner(banner),
     deps: [match.params.id, dispatch],
   });
 
@@ -52,11 +51,11 @@ const BannerForm = ({ match, history }) => {
     <Container className="pst-5">
       <Segment clearing>
         <Formik
-          initialValues={initialValues}
+          initialValues={selectedBanner}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
-              selectedBanner
+              selectedBanner.id
                 ? await updateBannerInFirestore(values)
                 : await addBannerToFirestore(values);
               setSubmitting(false);

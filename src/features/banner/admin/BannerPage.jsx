@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import { listenToBannersFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 import { useMenuButtonCreate } from '../../../app/hooks/useMenuButtonCreate';
-import { listenToBanners } from '../bannerActions';
+
 import BannerItem from './BannerItem';
 
+const initialState = [];
 const BannerPage = () => {
-  const dispatch = useDispatch();
-  const { banners } = useSelector((state) => state.banner);
+  const [banners, setBanners] = useState(initialState);
+  // const { banners } = useSelector((state) => state.banner);
   // const { loading } = useSelector((state) => state.async);
 
   useMenuButtonCreate({
     createURL: '/admin/createbanner',
     createText: 'Crear Banner',
-    deps: [dispatch],
+    deps: [],
   });
 
   useFirestoreCollection({
     query: () => listenToBannersFromFirestore(),
-    data: (banners) => dispatch(listenToBanners(banners)),
-    deps: [dispatch],
+    data: (banners) => setBanners(banners),
+    deps: [],
   });
 
   return (
