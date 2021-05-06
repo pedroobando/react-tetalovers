@@ -1,27 +1,24 @@
-import React from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import { Container } from 'semantic-ui-react';
 import { listenToCategoriesFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 import { useMenuButtonCreate } from '../../../app/hooks/useMenuButtonCreate';
-import { listenToCategories } from '../categoryActions';
 import CategoryItem from './CategoryItem';
 
+const initialState = [];
 const CategoryPage = () => {
-  const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.category);
+  const [categories, setCategories] = useState(initialState);
 
   useMenuButtonCreate({
     createURL: '/admin/createcategory',
     createText: 'Crear Categoria',
-    deps: [dispatch],
+    deps: [],
   });
 
   useFirestoreCollection({
     query: () => listenToCategoriesFromFirestore(),
-    data: (categories) => dispatch(listenToCategories(categories)),
-    deps: [dispatch],
+    data: (loCategories) => setCategories(loCategories),
+    deps: [],
   });
 
   return (

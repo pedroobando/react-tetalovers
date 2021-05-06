@@ -1,21 +1,20 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import SecctionCategoryItem from './SecctionCategoryItem';
 
 import { listenToCategoriesFromFirestore } from '../../../app/firestore/firestoreService';
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
-import { listenToCategories } from '../categoryActions';
 
 import './styleSecctionCategory.scss';
 
+const initialState = [];
+
 const SecctionCategory = () => {
-  const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.category);
+  const [categories, setCategories] = useState(initialState);
 
   useFirestoreCollection({
     query: () => listenToCategoriesFromFirestore(),
-    data: (categories) => dispatch(listenToCategories(categories)),
-    deps: [dispatch],
+    data: (loCategories) => setCategories(loCategories),
+    deps: [],
   });
 
   return (

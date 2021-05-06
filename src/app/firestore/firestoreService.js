@@ -73,13 +73,13 @@ export const listenToCategoryFromFirestore = (categoryId) => {
 export const addCategoryToFirestore = (category) => {
   return db.collection('categories').add({
     ...category,
-    dateCreate: 'Diana',
-    hostPhotoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
-    attendees: firebase.firestore.FieldValue.arrayUnion({
-      id: cuid(),
-      displayName: 'Diana',
-      photoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
-    }),
+    dateCreate: new Date(),
+    // hostPhotoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
+    // attendees: firebase.firestore.FieldValue.arrayUnion({
+    //   id: cuid(),
+    //   displayName: 'Diana',
+    //   photoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
+    // }),
   });
 };
 

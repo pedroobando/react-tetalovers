@@ -24,7 +24,6 @@ const initialValues = {
 };
 
 const BannerForm = ({ match, history }) => {
-  // global  google
   const dispatch = useDispatch();
   const [selectedBanner, setSelectedBanner] = useState(initialValues);
   const [confirmOpen, setConfirmOpen] = useState(false);

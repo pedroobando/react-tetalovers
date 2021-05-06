@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Container, Header, Segment, Button } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
-import { listenToCategories } from '../categoryActions';
+
+// import { listenToCategories } from '../categoryActions';
 import { useFirestoreDoc } from '../../../app/hooks/useFirestoreDoc';
 import {
   listenToCategoryFromFirestore,
@@ -17,20 +18,17 @@ import * as Yup from 'yup';
 
 import MyTextInput from '../../../app/common/form/MyTextInput';
 
-const CategoryForm = ({ match, history }) => {
-  // global  google
-  const dispatch = useDispatch();
-  const selectedCategory = useSelector((state) =>
-    state.category.categories.find((cat) => cat.id == match.params.id)
-  );
-  const { loading, error } = useSelector((state) => state.async);
+const initialValues = {
+  name: '',
+  commentary: '',
+  imagenURL: '',
+  date: '',
+};
 
-  const initialValues = selectedCategory ?? {
-    name: '',
-    commentary: '',
-    imagenURL: '',
-    date: '',
-  };
+const CategoryForm = ({ match, history }) => {
+  const dispatch = useDispatch();
+  const [selectedCategory, setSelectedCategory] = useState(initialValues);
+  const { loading, error } = useSelector((state) => state.async);
 
   const validationSchema = Yup.object({
     name: Yup.string().required('El nombre de la categoria requerido'),
@@ -41,7 +39,7 @@ const CategoryForm = ({ match, history }) => {
   useFirestoreDoc({
     shouldExecute: !!match.params.id,
     query: () => listenToCategoryFromFirestore(match.params.id),
-    data: (category) => dispatch(listenToCategories([category])),
+    data: (category) => setSelectedCategory(category),
     deps: [match.params.id, dispatch],
   });
 
@@ -52,11 +50,11 @@ const CategoryForm = ({ match, history }) => {
     <Container className="pst-5">
       <Segment clearing>
         <Formik
-          initialValues={initialValues}
+          initialValues={selectedCategory}
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
-              selectedCategory
+              selectedCategory.id
                 ? await updateCategoryInFirestore(values)
                 : await addCategoryToFirestore(values);
               setSubmitting(false);

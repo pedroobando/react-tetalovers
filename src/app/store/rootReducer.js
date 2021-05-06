@@ -3,7 +3,7 @@ import testReducer from '../../features/sandox/testRedux';
 import asyncReducer from '../async/asyncReducer';
 import authReducer from '../../features/auth/authReducer';
 // import bannerReducer from '../../features/banner/bannerReducer';
-import categoryReducer from '../../features/category/categoryReducer';
+// import categoryReducer from '../../features/category/categoryReducer';
 import modalReducer from '../common/modals/modalReducer';
 import productReducer from '../../features/product/productReducer';
 import menuReducer from '../../features/nav/menuReducer';
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   async: asyncReducer,
   // banner: bannerReducer,
-  category: categoryReducer,
+  // category: categoryReducer,
   product: productReducer,
 });
 
