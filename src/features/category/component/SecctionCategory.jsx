@@ -5,6 +5,7 @@ import { listenToCategoriesFromFirestore } from '../../../app/firestore/firestor
 import { useFirestoreCollection } from '../../../app/hooks/useFirestoreCollection';
 
 import './styleSecctionCategory.scss';
+import { Header } from 'semantic-ui-react';
 
 const initialState = [];
 
@@ -18,11 +19,14 @@ const SecctionCategory = () => {
   });
 
   return (
-    <section className="my-4 categories">
-      {categories.map((cat, ind) => (
-        <SecctionCategoryItem category={cat} key={ind} />
-      ))}
-    </section>
+    <div className="my-10">
+      <Header as="h2" textAlign="left" content="Nuestras categorias" color="black" />
+      <section className="categories">
+        {categories.map((cat, ind) => (
+          <SecctionCategoryItem category={cat} key={ind} />
+        ))}
+      </section>
+    </div>
   );
 };
 
