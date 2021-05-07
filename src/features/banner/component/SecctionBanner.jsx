@@ -39,7 +39,7 @@ const SecctionBanner = () => {
       <Slider {...settings}>
         {banners.map((promo, idx) => (
           <Link key={idx} to={promo.linkURL.toString().length > 1 ? promo.linkURL : '/home'}>
-            <img src={promo.imagenURL} alt={promo.name} />
+            <img src={promo.imagenFile.url} alt={promo.name} />
           </Link>
         ))}
       </Slider>

@@ -3,11 +3,11 @@ import { Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const SecctionCategoryItem = ({ category }) => {
-  const { categoryId, name, imagenURL } = category;
+  const { categoryId, name, imagenFile } = category;
 
   return (
     <Link className="categoryItem my-2 mx-1" to={`/teta?category=${categoryId}`}>
-      <Image src={imagenURL} circular size="medium" alt={name} />
+      <Image src={imagenFile.url} data-src="/assets/brand-cafe.png" size="medium" alt={name} />
     </Link>
   );
 };

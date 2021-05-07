@@ -6,13 +6,13 @@ import { openModal } from '../../../app/common/modals/modalReducer';
 
 const CategoryItem = ({ category }) => {
   const dispatch = useDispatch();
-  const { name, imagenURL, commentary, id } = category;
+  const { name, imagenFile, commentary, id } = category;
 
   return (
     <Segment>
       <Item.Group>
         <Item>
-          <Item.Image src={imagenURL} />
+          <Item.Image src={imagenFile.url} />
           <Item.Content>
             <Item.Header as="h2">{name}</Item.Header>
             <Item.Meta>

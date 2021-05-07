@@ -15,16 +15,23 @@ import {
 import * as Yup from 'yup';
 
 import MyTextInput from '../../../app/common/form/MyTextInput';
+import MyFileInput from '../../../app/common/form/MyFileInput';
+import {
+  removeToCloudinary,
+  uploadToCloudinary,
+} from '../../../app/cloudinary/cloudinaryService';
 
 const initialValues = {
   name: '',
-  imagenURL: '',
+  imagenFile: { id: '', name: '', url: '' },
   linkURL: '',
+  isActive: true,
   date: '',
 };
 
 const BannerForm = ({ match, history }) => {
   const dispatch = useDispatch();
+  const [fileUpload, setFileUpload] = useState(null);
   const [selectedBanner, setSelectedBanner] = useState(initialValues);
   const [confirmOpen, setConfirmOpen] = useState(false);
 
@@ -32,7 +39,7 @@ const BannerForm = ({ match, history }) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required('El nombre es requerido'),
-    imagenURL: Yup.string().required('La ruta de la imagen es requerida'),
+    // imagenURL: Yup.string().required('La ruta de la imagen es requerida'),
   });
 
   useFirestoreDoc({
@@ -41,6 +48,29 @@ const BannerForm = ({ match, history }) => {
     data: (banner) => setSelectedBanner(banner),
     deps: [match.params.id, dispatch],
   });
+
+  const handleFileUpload = (file) => {
+    setFileUpload(file);
+  };
+
+  const cloudFileUpdate = async (values) => {
+    if (selectedBanner.id && fileUpload) {
+      const { id } = initialValues.imagenFile;
+      if (id.toString().length >= 2) {
+        await removeToCloudinary(id);
+      }
+    }
+
+    if (fileUpload) {
+      const cloudfile = await uploadToCloudinary(fileUpload);
+      return {
+        ...values,
+        url: cloudfile.secure_url,
+        id: cloudfile.public_id,
+      };
+    }
+    return values;
+  };
 
   if (loading) return <LoadingComponent content="Loading banner.." />;
   if (error) return <Redirect to="/error" />;
@@ -53,6 +83,7 @@ const BannerForm = ({ match, history }) => {
           validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
+              values.imagenFile = await cloudFileUpdate(values.imagenFile);
               selectedBanner.id
                 ? await updateBannerInFirestore(values)
                 : await addBannerToFirestore(values);
@@ -68,7 +99,11 @@ const BannerForm = ({ match, history }) => {
               <Header sub color="teal" content="Datos del Banner" />
               <MyTextInput name="name" placeholder="Banner titulo" />
               <MyTextInput name="linkURL" placeholder="Hypervinculo, al presionar." />
-              <MyTextInput name="imagenURL" placeholder="Ruta de la imagen o del Banner" />
+              <MyFileInput
+                name="imagenFile"
+                onfileupload={(e) => handleFileUpload(e)}
+                placeholder="Indique la imagen a subir"
+              />
 
               <Button
                 loading={isSubmitting}

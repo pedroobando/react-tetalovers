@@ -19,12 +19,12 @@ const eventImageTextStyle = {
 
 const BannerItem = ({ banner }) => {
   const dispatch = useDispatch();
-  const { name, imagenURL, linkURL, id } = banner;
+  const { name, imagenFile, linkURL, id } = banner;
 
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: '0' }}>
-        <Image src={imagenURL} fluid style={eventImageStyle} />
+        <Image src={imagenFile.url} fluid style={eventImageStyle} />
 
         <Segment basic style={eventImageTextStyle}>
           <Item.Group>

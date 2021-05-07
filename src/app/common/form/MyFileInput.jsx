@@ -3,7 +3,6 @@ import { useField } from 'formik';
 import { FormField, Label } from 'semantic-ui-react';
 
 const MyFileInput = ({ label, onfileupload, ...props }) => {
-  // const { onfileupload } = props;
   const [field, meta, helpers] = useField(props);
 
   const handlePictureClick = () => {

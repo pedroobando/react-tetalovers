@@ -27,11 +27,9 @@ import {
 } from '../../../app/cloudinary/cloudinaryService';
 
 const ProductForm = ({ match, history }) => {
-  // global  google
-
-  const [dataCategories, setDataCategories] = useState([]);
   const dispatch = useDispatch();
   const [fileUpload, setFileUpload] = useState(null);
+  const [dataCategories, setDataCategories] = useState([]);
   const selectedProduct = useSelector((state) =>
     state.product.products.find((prd) => prd.id == match.params.id)
   );
